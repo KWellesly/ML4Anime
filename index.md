@@ -11,7 +11,14 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 
 ## Modelling & Results
 ### Modelling [average of the vector representation of each anime, what distance metric was used, etc]
-...
+The KNN algorithm seeks to find the k most similar anime to the current anime. However, often times it is very difficult for users to be able to capture the full breadth of their anime preferences in a single anime. In our modified KNN algorithm, we allow users to input an arbitrary amount of anime that they like in an attempt to better understand and recommend anime catered to their preference. Assume a user inputs *n* different anime that they enjoyed. To model this, we average out the *n* feature vectors of each of those anime and compute KNN on this new vector that ideally captures the essence of each of their preferred animes.
+
+$$knn\_input\_vector = \frac{\sum_{i} anime\_vector_i}{n}$$ 
+<p align="center">
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input.jpg" width="500"/>
+</p>
+
+
 
 ### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results]
 <p align="center">
