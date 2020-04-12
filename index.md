@@ -15,7 +15,7 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 
 ### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results]
 <p align="center">
-  <img src="https://raw.githubusercontent.com/KWellesly/ML4Anime/master/graphs/PCA-2D.jpeg" width="500"/>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
 </p>
 
 ## Conclusion
