@@ -4,9 +4,9 @@
 Anime is a form of animated media with origins tied to Japan. A recent Google trend revealed that there are between 10-100M searches for anime related topics every month [cite source]. This number has only just peaked in the month of April [cite source] as a result of nation-wide quarantine orders and subsequent efforts to find an entertainment medium. Our goal is to apply machine learning to recommend the best anime for a user to watch based on their personal favorites. Recommendation engines can be built using the techniques of either collaborative or content-based filtering. Due to the limitations of our dataset, our implementation involved using content-based filtering with a modified KNN. To enhance the model and provide only the best of recommendations, we used a combination of dense, categorical, and textual features.
 
 ## Data
-### Dataset [explain what features we have, what they represent, graphs, etc]
+### Dataset [explain what features we have, what they represent, graphs, etc] - Stella / Savannah
 ...
-### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc]
+### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc] - [sanders, stella, savannah]
 
 Our dataset conveniently held a wealth of information for us in the form of a textual synopsis of the anime. [TALK ABOUT CLEANING HERE]. After having cleaned up the textual data, we used a pretrained word2vec model by Google that was trained on the Google News corpus (over 300 billion words) to output 300-dimensional word vectors. The idea was to use the word embeddings to capture the semantics of the summary in an attempt to use these features to find other anime with similar summaries in semantics. We compute a 1x300 **synopsis summary vector** for each anime by plugging in every word of the synopsis into the word2vec model and averaging all the vectors. Note, fictional words specific to an anime (such as "Geass" or names like "Lelouch") may not generate a resulting word embedding, in which case the word is simply ignored in the final calculation of the synopsis summary vector. 
 <p align='center'>
@@ -55,7 +55,7 @@ The KNN algorithm seeks to find the k most similar anime to the current anime. H
 
 
 
-### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results]
+### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] - [linsey]
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
 </p>
@@ -63,6 +63,6 @@ The KNN algorithm seeks to find the k most similar anime to the current anime. H
   Figure __: PCA of feature space into 2D space
 </p>
 
-## Conclusion
+## Conclusion [Stella]
 
-## References
+## References [all of us]
