@@ -1,6 +1,6 @@
 # Anime Recommendation Engine
 
-## Motivation
+## Motivation [kevin]
 Anime is a form of animated media with origins tied to Japan. A recent Google trend revealed that there are between 10-100M searches for anime related topics every month [cite source]. This number has only just peaked in the month of April [cite source] as a result of nation-wide quarantine orders and subsequent efforts to find an entertainment medium. Our goal is to apply machine learning to recommend the best anime for a user to watch based on their personal favorites. Recommendation engines can be built using the techniques of either collaborative or content-based filtering. Due to the limitations of our dataset, our implementation involved using content-based filtering with a modified KNN. To enhance the model and provide only the best of recommendations, we used a combination of dense, categorical, and textual features.
 
 ## Data
@@ -35,6 +35,56 @@ The above *stats* correlation matrix shows many expected behaviors. For example:
 </p>
 The above correlation matrix shows the correlation matrix for the subset of our features containing information on the producer. While there were many producers to consider, the more notable ones: Aniplex, a flagship animation company owned by Sony, and Dentsu, Japan's largest advertising company, had positive correlations with respect to their scores, number of favorites, and number of members. 
 
+### PCA [stella + kevin]
+
+In an attempt to better visualize the feature space, PCA was conducted to transform the feature space to 2D space. 
+<p align='center'>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
+</p>
+<p align='center'>
+  Figure __: PCA of feature space into 2D space
+</p>
+
+### DBSCAN [kevin]
+
+The PCA graph revealed that there were clearly distinct groups of anime being formed. To better understand these groups and the anime comprised within these groups, we conducted DBSCAN, an upsuperviseed clustering algorithm. In order to properly use DBSCAN, we tuned the *minpts* parameter by using the heuristic: minpts <= D+1. We set minpts=3 since our PCA reduced the number of dimensions of the feature space down to 2. *epislon* was tuned by graphing and sorting the distances of 10th nearest neighbor of each point. The "elbow method" was used to set *epsilon* to 3. 
+<p align='center'>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/DBSCAN_elbow_method.jpg" width="500"/>
+</p>
+<p align='center'>
+  Figure __: Elbow method to tune the epsilon parameter for DBSCAN
+</p>
+
+The resulting DBSCAN consisted of 8 clusters and 18 noise points. 
+<p align='center'>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/DBSCAN.jpg" width="500"/>
+</p>
+<p align='center'>
+  Figure __: DBSCAN on PCA of feature space
+</p>
+
+Below is a deeper dive into a subset of specific anime within each cluster:
+
+<p align='center'>
+  <table>
+    <thead>
+      <tr>
+        <th>Cluster 1</th>
+        <th>Cluster 2</th>
+        <th>Cluster 3</th>
+        <th>Cluster 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster1_topk.jpg" width="500"/></td>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster2_topk.jpg" width="500"/></td>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster3_topk.jpg" width="500"/></td>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster4_topk.jpg" width="500"/></td>
+      </tr>
+    </tbody>
+  </table
+</p>
 
 
 ## Modelling & Results
@@ -56,12 +106,7 @@ The KNN algorithm seeks to find the k most similar anime to the current anime. H
 
 
 ### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] - [linsey]
-<p align='center'>
-  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
-</p>
-<p align='center'>
-  Figure __: PCA of feature space into 2D space
-</p>
+
 
 ## Conclusion [Stella]
 
