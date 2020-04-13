@@ -12,20 +12,27 @@ Our dataset conveniently held a wealth of information for us in the form of a te
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/synopsis_summary_vector.jpg" width="500"/>
 </p>
+<bold align='center'>
+  Figure __: Synopsis summary vector
+</bold>
 
 Ultimately, each anime had a corresponding feature vector of shape 1x414. To better understand our feature set and intrinsic relationships amongst features, the following correlation matrices (performed on subsets of features for visibility) were generated to better:
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/stats_genre_corr_matrix.jpg" width="500"/>
-  <bold>Figure __: Correlation matrix for stats and genre features </bold>
 </p>
+<bold align='center'>
+  Figure __: Correlation matrix for stats and genre features
+</bold>
 
 The above *stats* correlation matrix shows many expected behaviors. For example: a very strong negative correlation between score and ranking, and a very strong positive correlation between members and number of favorites. Likewise, there are relatively strong positive correlations between the genres of "Ecchi" and "Harem", and "Fantasy" and "Magic". Particularly interesting was the fact that anime with the genre "Kids" had a much higher chance of being popular while anime labelled as "Romance" were more likely to be less popular. 
 
 
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/stats_producecr_corr_matrix.jpg" width="500"/>
-  <bold>Figure __: Correlation matrix for stats and producer features </bold>
 </p>
+<bold align='center'>
+  Figure __: Correlation matrix for stats and producer features
+</bold>
 The above correlation matrix shows the correlation matrix for the subset of our features containing information on the producer. While there were many producers to consider, the more notable ones: Aniplex, a flagship animation company owned by Sony, and Dentsu, Japan's largest advertising company, had positive correlations with respect to their scores, number of favorites, and number of members. 
 
 
@@ -36,10 +43,15 @@ The KNN algorithm seeks to find the k most similar anime to the current anime. H
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input_vector.jpg" width="500"/>
 </p>
-
+<bold align='center'>
+  Figure __: KNN input vector
+</bold>
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input.jpg" width="500"/>
 </p>
+<bold align='center'>
+  Figure __: Graphical representation of KNN input vector
+</bold>
 
 
 
