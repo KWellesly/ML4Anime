@@ -7,22 +7,37 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 ### Dataset [explain what features we have, what they represent, graphs, etc]
 ...
 ### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc]
-...
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/stats_corr_matrix.jpg" width="500"/>
+</center>
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/stats_corr_matrix.jpg" width="500"/>
+</center>
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/stats_genre_corr_matrix.jpg" width="500"/>
+</center>
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/stats_producecr_corr_matrix.jpg" width="500"/>
+</center>
+
 
 ## Modelling & Results
 ### Modelling [average of the vector representation of each anime, what distance metric was used, etc]
 The KNN algorithm seeks to find the k most similar anime to the current anime. However, often times it is very difficult for users to be able to capture the full breadth of their anime preferences in a single anime. In our modified KNN algorithm, we allow users to input an arbitrary amount of anime that they like in an attempt to better understand and recommend anime catered to their preference. Assume a user inputs *n* different anime that they enjoyed. To model this, we average out the *n* feature vectors of each of those anime and compute KNN on this new vector that ideally captures the essence of each of their preferred animes.
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input_vector.jpg" width="500"/>
+</center>
 
-<img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input_vector.jpg" width="500"/>
-
-<img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input.jpg" width="500"/>
-
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/KNN_input.jpg" width="500"/>
+</center>
 
 
 
 ### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results]
-<img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
-
+<center>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
+</center>
 
 ## Conclusion
 
