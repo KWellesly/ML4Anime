@@ -70,17 +70,19 @@ Below is a deeper dive into a subset of specific anime within each cluster:
     <thead>
       <tr>
         <th>Cluster 1</th>
-        <th>Cluster 2</th>
-        <th>Cluster 3</th>
         <th>Cluster 4</th>
+        <th>Cluster 5</th>
+        <th>Cluster 6</th>
+        <th>Cluster Outlier</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster1_topk.jpg" width="500"/></td>
-        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster2_topk.jpg" width="500"/></td>
-        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster3_topk.jpg" width="500"/></td>
         <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster4_topk.jpg" width="500"/></td>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster5_topk.jpg" width="500"/></td>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster6_topk.jpg" width="500"/></td>
+        <td><img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/cluster_outlier_topk.jpg" width="500"/></td>
       </tr>
     </tbody>
   </table
