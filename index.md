@@ -37,7 +37,18 @@ The above correlation matrix shows the correlation matrix for the subset of our 
 
 ### PCA [stella + kevin]
 
-In an attempt to better visualize the feature space, PCA was conducted to transform the feature space to 2D space. 
+Due to the fact that our feature space was so large (primarily as a result of using textual features), we attempted to reduce the feature space by using PCA. By graphing the summed captured variance of each component, we deduced that using 300 components out of the total 412 was suitable for our needs as it covered 98% of the variance of our feature set. This PCA'ed version of our feature set was then used in our KNN model to find the best anime recommendations. 
+
+<p align='center'>
+  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA_captured_var.jpg" width="500"/>
+</p>
+<p align='center'>
+  Figure __: Captured variance of 300 components was 98%
+</p>
+
+
+
+In an attempt to better visualize the feature space, and the relative space and groupings of anime, we used PCA to convert down to 2D space. It is important to note that using 2 features only captures 12.2% of the total variance in our feature set, and thus the feature space visualization is not optimal but merely serves as a visualization to gain a better understanding of the dataset. 
 <p align='center'>
   <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/PCA-2D.jpg" width="500"/>
 </p>
