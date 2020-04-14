@@ -10,7 +10,7 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 
 Our dataset conveniently held a wealth of information for us in the form of a textual synopsis of the anime. [TALK ABOUT CLEANING HERE]. After having cleaned up the textual data, we used a pretrained word2vec model by Google that was trained on the Google News corpus (over 300 billion words) to output 300-dimensional word vectors. The idea was to use the word embeddings to capture the semantics of the summary in an attempt to use these features to find other anime with similar summaries in semantics. We compute a 1x300 **synopsis summary vector** for each anime by plugging in every word of the synopsis into the word2vec model and averaging all the vectors. Note, fictional words specific to an anime (such as "Geass" or names like "Lelouch") may not generate a resulting word embedding, in which case the word is simply ignored in the final calculation of the synopsis summary vector. 
 <p align='center'>
-  <img src="https://github.com/KWellesly/ML4Anime/blob/master/graphs/synopsis_summary_vector.jpg" width="500"/>
+  <img src="graphs/synopsis_summary_vector.jpg" width="500"/>
 </p>
 <p align='center'>
   Figure __: Synopsis summary vector
