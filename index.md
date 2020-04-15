@@ -16,7 +16,7 @@ Our dataset conveniently held a wealth of information for us in the form of a te
   Figure __: Synopsis summary vector
 </p>
 
-Ultimately, each anime had a corresponding feature vector of shape 1x414. To better understand our feature set and intrinsic relationships amongst features, the following correlation matrices (performed on subsets of features for visibility) were generated to better:
+Ultimately, each anime had a corresponding feature vector of shape 1x414. To better understand our feature set and intrinsic relationships amongst features, the following correlation matrices (performed on subsets of features for visibility) were generated:
 <p align='center'>
   <img src="/ML4Anime/graphs/stats_genre_corr_matrix.jpg" width="500"/>
 </p>
@@ -58,7 +58,7 @@ In an attempt to better visualize the feature space, and the relative space and 
 
 ### DBSCAN [kevin]
 
-The PCA graph revealed that there were clearly distinct groups of anime being formed. To better understand these groups and the anime comprised within these groups, we conducted DBSCAN, an upsuperviseed clustering algorithm. In order to properly use DBSCAN, we tuned the *minpts* parameter by using the heuristic: minpts <= D+1. We set minpts=3 since our PCA reduced the number of dimensions of the feature space down to 2. *epislon* was tuned by graphing and sorting the distances of 10th nearest neighbor of each point. The "elbow method" was used to set *epsilon* to 3. 
+The PCA graph revealed that there were clearly distinct groups of anime being formed. To better understand these groups and the anime comprised within these groups, we conducted DBSCAN, an upsuperviseed clustering algorithm. In order to properly use DBSCAN, we tuned the *minpts* parameter by using the heuristic: minpts <= D+1. We set minpts=3 since our PCA reduced the number of dimensions of the feature space down to 2. *Epislon* was tuned by graphing and sorting the distances of 10th nearest neighbor of each point. The "elbow method" was used to set *epsilon* to 3. 
 <p align='center'>
   <img src="/ML4Anime/graphs/DBSCAN_elbow_method.jpg" width="500"/>
 </p>
@@ -96,7 +96,7 @@ Below is a deeper dive into a subset of specific anime within each cluster:
         <td><img src="/ML4Anime/graphs/cluster_outlier_topk.jpg" width="500"/></td>
       </tr>
     </tbody>
-  </table
+  </table>
 </p>
 
 
