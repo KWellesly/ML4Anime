@@ -5,36 +5,36 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 
 ## Data
 
-### Dataset [explain what features we have, what they represent, graphs, etc] - Stella / Savannah
-In our original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
+### Dataset Description
+We created the dataset for our model by combining two kaggle datasets, "Anime Recommendations Database" and "MyAnimeList Dataset." We were able to do this by joining the two datasets on their common animeID feature, and the result allows us to see both rating and demographic information for 13,631 unique anime. In our complete original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
 + <ins>animeID</ins>: Uniquely identifies each of the 13,631 included animes
 + <ins>name</ins>: Anime title
 + <ins>title_english</ins>: Anime title written in English
 + <ins>title_japanese</ins>: Anime title written in Japanese
 + <ins>title_synonyms</ins>: Array containing known nicknames for the anime
-+ <ins>type</ins>: 
-+ <ins>source</ins>:
-+ <ins>producers</ins>:
-+ <ins>genre</ins>:
-+ <ins>studio</ins>:
-+ <ins>episodes</ins>:
-+ <ins>status</ins>:
-+ <ins>airing</ins>:
-+ <ins>start_date</ins>:
-+ <ins>end_date</ins>:
-+ <ins>duration</ins>:
-+ <ins>rating</ins>:
-+ <ins>score</ins>:
-+ <ins>scored_by</ins>:
-+ <ins>rank</ins>:
-+ <ins>popularity</ins>:
-+ <ins>members</ins>:
-+ <ins>favorites</ins>:
-+ <ins>synopsis</ins>:
-+ <ins>background</ins>:
-+ <ins>premiered</ins>:
-+ <ins>broadcast</ins>:
-+ <ins>related</ins>:
++ <ins>type</ins>: Anime type such as Movie, Music, ONA, OVa, Special, TV, or Unknown
++ <ins>source</ins>: Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)
++ <ins>producers</ins>: Producer of the anime (1073 unique)
++ <ins>genre</ins>: Anime genre such as Action, Sci-Fi, Fantasy, etc. (40 unique)
++ <ins>studio</ins>: The studio creating the anime (47 unique)
++ <ins>episodes</ins>: The number of episodes in the anime (range from 1 to 3057)
++ <ins>status</ins>: Status of "Currently Airing" or "Finished Airing"
++ <ins>airing</ins>: TRUE if Status is "Currently Airing", FALSE otherwise
++ <ins>start_date</ins>: Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019)
++ <ins>end_date</ins>: Date that the anime stopped airing (ranges from 2/2/1962 to 9/2/2019)
++ <ins>duration</ins>: Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)
++ <ins>rating</ins>: Audience rating such as None, G, PG, PG-13, R 17+, or R+
++ <ins>score</ins>: Average rating for the anime (ranges from 1 to 10)
++ <ins>scored_by</ins>: Number of people who scored the anime (ranges from 0 to 1107955)
++ <ins>rank</ins>: Rank of the anime (ranges from 1 to 13838)
++ <ins>popularity</ins>: ??? (ranges from 1 to 15474)
++ <ins>members</ins>: ??? (ranges from 6 to 1610561)
++ <ins>favorites</ins>: ??? (ranges from 0 to 120331)
++ <ins>synopsis</ins>: Paragraph description of the anime storyline
++ <ins>background</ins>: Paragraph description of the history behind the anime's creation
++ <ins>premiered</ins>: Season that the anime premiered (ranges from Spring 1961 to Winter 2019)
++ <ins>broadcast</ins>: Scheduled broadcast time each week for the anime
++ <ins>related</ins>: Dictionary recording of any known related anime series
 
 ### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc] - [sanders, stella, savannah]
 
