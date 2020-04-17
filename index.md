@@ -16,7 +16,7 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 + <ins>source</ins>: Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)
 
 <p align='center'>
-<img src="/ML4Anime/graphs/Type Chart.PNG" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Source Chart.PNG" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
+<img src="/ML4Anime/graphs/Type Chart.PNG" style="float: left; width: 45%; height: 500; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Source Chart.PNG" style="float: left; width: 45%; height: 500; margin-right: 1%; margin-bottom: 0.5em;">
 <p style="clear: both;"></p>
 </p>
 
@@ -30,7 +30,7 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 + <ins>airing</ins>: TRUE if Status is "Currently Airing", FALSE otherwise
 
 <p align='center'>
-<img src="/ML4Anime/graphs/Genre Chart.PNG" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Airing Chart.PNG" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
+<img src="/ML4Anime/graphs/Genre Chart.PNG" style="float: left; width: 45%; height: 500; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Airing Chart.PNG" style="float: left; width: 45%; height: 500; margin-right: 1%; margin-bottom: 0.5em;">
 <p style="clear: both;"></p>
 </p>
 
