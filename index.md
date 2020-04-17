@@ -4,8 +4,38 @@
 Anime is a form of animated media with origins tied to Japan. A recent Google trend revealed that there are between 10-100M searches for anime related topics every month [cite source]. This number has only just peaked in the month of April [cite source] as a result of nation-wide quarantine orders and subsequent efforts to find an entertainment medium. Our goal is to apply machine learning to recommend the best anime for a user to watch based on their personal favorites. Recommendation engines can be built using the techniques of either collaborative or content-based filtering. Due to the limitations of our dataset, our implementation involved using content-based filtering with a modified KNN. To enhance the model and provide only the best of recommendations, we used a combination of dense, categorical, and textual features.
 
 ## Data
+
 ### Dataset [explain what features we have, what they represent, graphs, etc] - Stella / Savannah
-...
+In our original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
++ <ins>animeID</ins>: Uniquely identifies each of the 13,631 included animes
++ <ins>name</ins>: Anime title
++ <ins>title_english</ins>: Anime title written in English
++ <ins>title_japanese</ins>: Anime title written in Japanese
++ <ins>title_synonyms</ins>: Array containing known nicknames for the anime
++ <ins>type</ins>: 
++ <ins>source</ins>:
++ <ins>producers</ins>:
++ <ins>genre</ins>:
++ <ins>studio</ins>:
++ <ins>episodes</ins>:
++ <ins>status</ins>:
++ <ins>airing</ins>:
++ <ins>start_date</ins>:
++ <ins>end_date</ins>:
++ <ins>duration</ins>:
++ <ins>rating</ins>:
++ <ins>score</ins>:
++ <ins>scored_by</ins>:
++ <ins>rank</ins>:
++ <ins>popularity</ins>:
++ <ins>members</ins>:
++ <ins>favorites</ins>:
++ <ins>synopsis</ins>:
++ <ins>background</ins>:
++ <ins>premiered</ins>:
++ <ins>broadcast</ins>:
++ <ins>related</ins>:
+
 ### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc] - [sanders, stella, savannah]
 
 Our dataset conveniently held a wealth of information for us in the form of a textual synopsis of the anime. [TALK ABOUT CLEANING HERE]. After having cleaned up the textual data, we used a pretrained word2vec model by Google that was trained on the Google News corpus (over 300 billion words) to output 300-dimensional word vectors. The idea was to use the word embeddings to capture the semantics of the summary in an attempt to use these features to find other anime with similar summaries in semantics. We compute a 1x300 **synopsis summary vector** for each anime by plugging in every word of the synopsis into the word2vec model and averaging all the vectors. Note, fictional words specific to an anime (such as "Geass" or names like "Lelouch") may not generate a resulting word embedding, in which case the word is simply ignored in the final calculation of the synopsis summary vector. 
