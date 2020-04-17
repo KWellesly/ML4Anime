@@ -43,6 +43,14 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 + <ins>duration</ins>: Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)
 + <ins>rating</ins>: Audience rating such as None, G, PG, PG-13, R 17+, or R+
 + <ins>score</ins>: Average rating for the anime (ranges from 1 to 10)
+
+<p align='center'>
+<img src="/ML4Anime/graphs/Rating Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Score Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
+<p style="clear: both;"></p>
+</p>
+
+<p align='center'>Figure __: Anime Count Comparisons by Rating and Score</p>
+
 + <ins>scored_by</ins>: Number of people who scored the anime (ranges from 0 to 1107955)
 + <ins>rank</ins>: Rank of the anime (ranges from 1 to 13838)
 + <ins>popularity</ins>: ??? (ranges from 1 to 15474)
