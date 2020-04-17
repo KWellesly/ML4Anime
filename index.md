@@ -14,12 +14,30 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 + <ins>title_synonyms</ins>: Array containing known nicknames for the anime
 + <ins>type</ins>: Anime type such as Movie, Music, ONA, OVa, Special, TV, or Unknown
 + <ins>source</ins>: Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)
+
+<p align='center'>
+<img src="/ML4Anime/graphs/Type Chart.png" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Source Chart.png" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
+<p style="clear: both;">
+</p>
+
+<p align='center'>Figure __: Anime Count Comparisons by Type and Source</p>
+
 + <ins>producers</ins>: Producer of the anime (1073 unique)
 + <ins>genre</ins>: Anime genre such as Action, Sci-Fi, Fantasy, etc. (40 unique)
 + <ins>studio</ins>: The studio creating the anime (47 unique)
 + <ins>episodes</ins>: The number of episodes in the anime (range from 1 to 3057)
 + <ins>status</ins>: Status of "Currently Airing" or "Finished Airing"
 + <ins>airing</ins>: TRUE if Status is "Currently Airing", FALSE otherwise
+
+<p align='center'>
+<img src="/ML4Anime/graphs/Genre Chart.png" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Airing Chart.png" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
+<p style="clear: both;">
+</p>
+
+<p align='center'>
+  Figure __: Anime Count Comparison by Genre and Airing Status
+</p>
+
 + <ins>start_date</ins>: Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019)
 + <ins>end_date</ins>: Date that the anime stopped airing (ranges from 2/2/1962 to 9/2/2019)
 + <ins>duration</ins>: Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)
