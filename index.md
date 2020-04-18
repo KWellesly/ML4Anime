@@ -141,9 +141,9 @@ Below is a deeper dive into a subset of specific anime within each cluster:
     <thead>
       <tr>
         <th>Cluster 1</th>
+        <th>Cluster 2</th>
+        <th>Cluster 3</th>
         <th>Cluster 4</th>
-        <th>Cluster 5</th>
-        <th>Cluster 6</th>
         <th>Cluster Outlier</th>
       </tr>
     </thead>
