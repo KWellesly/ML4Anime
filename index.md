@@ -53,9 +53,9 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 
 + <ins>scored_by</ins>: Number of people who scored the anime (ranges from 0 to 1107955)
 + <ins>rank</ins>: Rank of the anime (ranges from 1 to 13838)
-+ <ins>popularity</ins>: ??? (ranges from 1 to 15474)
-+ <ins>members</ins>: ??? (ranges from 6 to 1610561)
-+ <ins>favorites</ins>: ??? (ranges from 0 to 120331)
++ <ins>popularity</ins>: Popularity rank according to MyAnimeList.net (ranges from 1 to 15474)
++ <ins>members</ins>: Number of community members in the anime's group (ranges from 6 to 1610561)
++ <ins>favorites</ins>: Number of times the anime has been added to a person's favorites (ranges from 0 to 120331)
 + <ins>synopsis</ins>: Paragraph description of the anime storyline
 + <ins>background</ins>: Paragraph description of the history behind the anime's creation
 + <ins>premiered</ins>: Season that the anime premiered (ranges from Spring 1961 to Winter 2019)
