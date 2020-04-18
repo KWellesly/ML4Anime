@@ -117,7 +117,8 @@ In an attempt to better visualize the feature space, and the relative space and 
 
 ### DBSCAN [kevin]
 
-The PCA graph revealed that there were clearly distinct groups of anime being formed. To better understand these groups and the anime comprised within these groups, we conducted DBSCAN, an upsuperviseed clustering algorithm. In order to properly use DBSCAN, we tuned the *minpts* parameter by using the heuristic: minpts <= D+1. We set minpts=3 since our PCA reduced the number of dimensions of the feature space down to 2. *Epislon* was tuned by graphing and sorting the distances of 10th nearest neighbor of each point. The "elbow method" was used to set *epsilon* to 3. 
+The PCA graph in 2 dimensional space showed clearly distinct clusters of anime which made us wonder exactly how these clusters formed and what type of anime were represented in each cluster. To tackle this problem, we converted our feature space to 300 dimensions (same feature space as our input to KNN), and performed DBSCAN, an unsupervised clustering algorithm. In order to properly use DBSCAN, we tuned the *minpts* parameter by hand such that not all the points were located in one cluster nor were there an exceptionally large number of noise points. Note, we could not use the heuristic of *minpts* <= D+1, because D would have been set to ~301 or ~13% of our entire dataset. We set *minpts*=3. *Epsilon* was tuned by graphing and sorting the distances of the 10th nearest neighbor of each point in 300 dimensional space. The “elbow method” was used to set *epsilon* to 30.
+
 <p align='center'>
   <img src="/ML4Anime/graphs/DBSCAN_elbow_method.jpg" width="500"/>
 </p>
@@ -125,7 +126,7 @@ The PCA graph revealed that there were clearly distinct groups of anime being fo
   Figure __: Elbow method to tune the epsilon parameter for DBSCAN
 </p>
 
-The resulting DBSCAN consisted of 8 clusters and 18 noise points. 
+The resulting DBSCAN consisted of 4 clusters and 97 noise points.
 <p align='center'>
   <img src="/ML4Anime/graphs/DBSCAN.jpg" width="500"/>
 </p>
@@ -149,9 +150,9 @@ Below is a deeper dive into a subset of specific anime within each cluster:
     <tbody>
       <tr>
         <td><img src="/ML4Anime/graphs/cluster1_topk.jpg" width="500"/></td>
+        <td><img src="/ML4Anime/graphs/cluster2_topk.jpg" width="500"/></td>
+        <td><img src="/ML4Anime/graphs/cluster3_topk.jpg" width="500"/></td>
         <td><img src="/ML4Anime/graphs/cluster4_topk.jpg" width="500"/></td>
-        <td><img src="/ML4Anime/graphs/cluster5_topk.jpg" width="500"/></td>
-        <td><img src="/ML4Anime/graphs/cluster6_topk.jpg" width="500"/></td>
         <td><img src="/ML4Anime/graphs/cluster_outlier_topk.jpg" width="500"/></td>
       </tr>
     </tbody>
