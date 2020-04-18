@@ -7,6 +7,13 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 
 ### Dataset Description
 We created the dataset for our model by combining two kaggle datasets, "Anime Recommendations Database" and "MyAnimeList Dataset." We were able to do this by joining the two datasets on their common animeID feature, and the result allows us to see both rating and demographic information for 13,631 unique anime. In our complete original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
+
+|Feature Name|Feature Description|  
+|---|---|
+|animeID|Uniquely identifies each of the 13,631 included animes|   
+|name|Anime title|  
+|title_english|Anime title in English|   
+
 + <ins>animeID</ins>: Uniquely identifies each of the 13,631 included animes
 + <ins>name</ins>: Anime title
 + <ins>title_english</ins>: Anime title written in English
