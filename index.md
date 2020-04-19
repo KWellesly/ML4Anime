@@ -17,10 +17,10 @@ We utilized a dataset that we found through a GitHub project called tidy.csv tha
 |title_synonyms|Nicknames or other known names for the anime|categorical|
 |type|Anime type such as Movie, Music, ONA, OVA, Special, TV, or Unknown|categorical|
 |source|Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)|categorical|
-|producers|Producer of the anime (1073 unique)|categorical|
+|producers|Producer of the anime (1,073 unique)|categorical|
 |genre|Anime genre such as Action, Sci-Fi, Fantasy, etc. (40 unique)|categorical|
 |studio|The studio creating the anime (47 unique)|categorical|
-|episodes|The number of episodes in the anime (range from 1 to 3057)|dense|
+|episodes|The number of episodes in the anime (range from 1 to 3,057)|dense|
 |status|Status of "Currently Airing" or "Finished Airing"|categorical|
 |airing|TRUE if Status is "Currently Airing", FALSE otherwise|categorical|
 |start_date|Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019) formatted as ymd|categorical|
@@ -28,11 +28,11 @@ We utilized a dataset that we found through a GitHub project called tidy.csv tha
 |duration|Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)|categorical|
 |rating|Audience rating such as None, G, PG, PG-13, R 17+, or R+|categorical|
 |score|Average rating for the anime (ranges from 1 to 10)|dense|
-|scored_by|Number of people who scored the anime (ranges from 0 to 1107955)|dense|
-|rank|Rank of the anime (ranges from 1 to 13838)|dense|
-|popularity|Popularity rank according to MyAnimeList.net (ranges from 1 to 15474)|dense|
-|members|Number of community members in the anime's group (ranges from 6 to 1610561)|dense|
-|favorites|Number of times the anime has been added to a person's favorites (ranges from 0 to 120331)|dense|
+|scored_by|Number of people who scored the anime (ranges from 0 to 1,107,955)|dense|
+|rank|Rank of the anime (ranges from 1 to 13,838)|dense|
+|popularity|Popularity rank according to MyAnimeList.net (ranges from 1 to 15,474)|dense|
+|members|Number of community members in the anime's group (ranges from 6 to 1,610,561)|dense|
+|favorites|Number of times the anime has been added to a person's favorites (ranges from 0 to 120,331)|dense|
 |synopsis|Paragraph description of the anime storyline|textual|
 |background|Paragraph description of the history behind the anime's creation|textual|
 |premiered|Season that the anime premiered (ranges from Spring 1961 to Winter 2019)|categorical|
@@ -44,7 +44,7 @@ We utilized a dataset that we found through a GitHub project called tidy.csv tha
 <p style="clear: both;"></p>
 </p>
 
-<p align='center'>Figure __: Anime Count Comparisons by Type and Source</p>
+<p align='center'>Figure 1: Anime Count Comparisons by Type and Source</p>
 
 <p align='center'>
 <img src="/ML4Anime/graphs/Genre Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Airing Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
@@ -52,7 +52,7 @@ We utilized a dataset that we found through a GitHub project called tidy.csv tha
 </p>
 
 <p align='center'>
-  Figure __: Anime Count Comparison by Genre and Airing Status
+  Figure 2: Anime Count Comparison by Genre and Airing Status
 </p>
 
 <p align='center'>
@@ -60,7 +60,20 @@ We utilized a dataset that we found through a GitHub project called tidy.csv tha
 <p style="clear: both;"></p>
 </p>
 
-<p align='center'>Figure __: Anime Count Comparisons by Rating and Score</p>
+<p align='center'>Figure 3: Anime Count Comparisons by Rating and Score</p>
+
+<p align='center'>
+<img src="/ML4Anime/graphs/Producer Score Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Studio Score Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
+<p style="clear: both;"></p>
+</p>
+
+<p align='center'>Figure 4: Average Score of Most Reviewed Producers and Studios</p>
+
+<p align='center'>
+  <img src="/ML4Anime/graphs/Premier Decade.PNG" width="500"/>
+</p>
+
+<p align='center'>Figure 5: Anime Count by Decade of Premier</p>
 
 ### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc] - [sanders, stella, savannah]
 
