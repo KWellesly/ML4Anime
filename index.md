@@ -1,26 +1,45 @@
 # Anime Recommendation Engine
 
 ## Motivation [kevin]
-Anime is a form of animated media with origins tied to Japan. A recent Google trend revealed that there are between 10-100M searches for anime related topics every month [1]. This number has only just peaked in recent months [2] as a result of nation-wide quarantine orders and subsequent efforts to find an entertainment medium. Our goal is to apply machine learning to recommend the best anime for a user to watch based on their personal favorites. Recommendation engines can be built using the techniques of either collaborative or content-based filtering. Due to the limitations of our dataset, our implementation involved using content-based filtering with a modified KNN. To enhance the model and provide only the best of recommendations, we used a combination of dense, categorical, and textual features.
+Anime is a form of animated media with origins tied to Japan. A recent Google trend revealed that there are between 10-100M searches for anime related topics every month [1]. This number has only just peaked in recent months as a result of nation-wide quarantine orders and subsequent efforts to find an entertainment medium [2]. Our goal is to apply machine learning to recommend the best anime for a user to watch based on their personal favorites. Recommendation engines can be built using the techniques of either collaborative or content-based filtering. Due to the limitations of our dataset, our implementation involved using content-based filtering with a modified KNN. To enhance the model and provide only the best of recommendations, we used a combination of dense, categorical, and textual features.
 
 ## Data
 
 ### Dataset Description
-We created the dataset for our model by combining two kaggle datasets, "Anime Recommendations Database" and "MyAnimeList Dataset." We were able to do this by joining the two datasets on their common animeID feature, and the result allows us to see both rating and demographic information for 13,631 unique anime. In our complete original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
+We utilized a dataset called tidy.csv that we found through GitHub that had been constructed from a kaggle dataset [3]. In our complete original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
 
-|Feature Name|Feature Description|  
-|---|---|
-|animeID|Uniquely identifies each of the 13,631 included animes|   
-|name|Anime title|  
-|title_english|Anime title in English|   
+|Name|Description|Type|
+|---|---|---|
+|animeID|Uniquely identifies each of the 13,631 included animes|dense| 
+|name|Anime title|textual|  
+|title_english|Anime title in English|textual|    
+|title_japanese|Anime title in Japanese|textual|
+|title_synonyms|Nicknames or other known names for the anime|textual|
+|type|Anime type such as Movie, Music, ONA, OVa, Special, TV, or Unknown|categorical|
+|source|Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)|categorical|
+|producers|Producer of the anime (1073 unique)|categorical|
+|genre|Anime genre such as Action, Sci-Fi, Fantasy, etc. (40 unique)|categorical|
+|studio|The studio creating the anime (47 unique)|categorical|
+|episodes|The number of episodes in the anime (range from 1 to 3057)|dense|
+|status|Status of "Currently Airing" or "Finished Airing"|textual|
+|airing|TRUE if Status is "Currently Airing", FALSE otherwise|textual|
+|start_date|Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019) formatted as ymd|dense|
+|end_date|Date that the anime stopped airing (ranges from 2/2/1962 to 9/2/2019) formatted as ymd|dense|
+|duration|Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)|textual|
+|rating|Audience rating such as None, G, PG, PG-13, R 17+, or R+|categorical|
+|score|Average rating for the anime (ranges from 1 to 10)|dense|
+|scored_by|Number of people who scored the anime (ranges from 0 to 1107955)|dense|
+|rank|Rank of the anime (ranges from 1 to 13838)|dense|
+|popularity|Popularity rank according to MyAnimeList.net (ranges from 1 to 15474)|dense|
+|members|Number of community members in the anime's group (ranges from 6 to 1610561)|dense|
+|favorites|Number of times the anime has been added to a person's favorites (ranges from 0 to 120331)|dense|
+|synopsis|Paragraph description of the anime storyline|textual|
+|background|Paragraph description of the history behind the anime's creation|textual|
+|premiered|Season that the anime premiered (ranges from Spring 1961 to Winter 2019)|textual|
+|broadcast|Scheduled broadcast time each week for the anime|textual|
+|related|Any known related anime series|textual|
 
-+ <ins>animeID</ins>: Uniquely identifies each of the 13,631 included animes
-+ <ins>name</ins>: Anime title
-+ <ins>title_english</ins>: Anime title written in English
-+ <ins>title_japanese</ins>: Anime title written in Japanese
-+ <ins>title_synonyms</ins>: Array containing known nicknames for the anime
-+ <ins>type</ins>: Anime type such as Movie, Music, ONA, OVa, Special, TV, or Unknown
-+ <ins>source</ins>: Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)
+Note: the only features marked categorical are those that were later one-hot encoded
 
 <p align='center'>
 <img src="/ML4Anime/graphs/Type Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Source Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
@@ -28,13 +47,6 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 </p>
 
 <p align='center'>Figure __: Anime Count Comparisons by Type and Source</p>
-
-+ <ins>producers</ins>: Producer of the anime (1073 unique)
-+ <ins>genre</ins>: Anime genre such as Action, Sci-Fi, Fantasy, etc. (40 unique)
-+ <ins>studio</ins>: The studio creating the anime (47 unique)
-+ <ins>episodes</ins>: The number of episodes in the anime (range from 1 to 3057)
-+ <ins>status</ins>: Status of "Currently Airing" or "Finished Airing"
-+ <ins>airing</ins>: TRUE if Status is "Currently Airing", FALSE otherwise
 
 <p align='center'>
 <img src="/ML4Anime/graphs/Genre Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Airing Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
@@ -45,12 +57,6 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
   Figure __: Anime Count Comparison by Genre and Airing Status
 </p>
 
-+ <ins>start_date</ins>: Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019)
-+ <ins>end_date</ins>: Date that the anime stopped airing (ranges from 2/2/1962 to 9/2/2019)
-+ <ins>duration</ins>: Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)
-+ <ins>rating</ins>: Audience rating such as None, G, PG, PG-13, R 17+, or R+
-+ <ins>score</ins>: Average rating for the anime (ranges from 1 to 10)
-
 <p align='center'>
 <img src="/ML4Anime/graphs/Rating Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Score Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
 <p style="clear: both;"></p>
@@ -58,22 +64,11 @@ We created the dataset for our model by combining two kaggle datasets, "Anime Re
 
 <p align='center'>Figure __: Anime Count Comparisons by Rating and Score</p>
 
-+ <ins>scored_by</ins>: Number of people who scored the anime (ranges from 0 to 1107955)
-+ <ins>rank</ins>: Rank of the anime (ranges from 1 to 13838)
-+ <ins>popularity</ins>: Popularity rank according to MyAnimeList.net (ranges from 1 to 15474)
-+ <ins>members</ins>: Number of community members in the anime's group (ranges from 6 to 1610561)
-+ <ins>favorites</ins>: Number of times the anime has been added to a person's favorites (ranges from 0 to 120331)
-+ <ins>synopsis</ins>: Paragraph description of the anime storyline
-+ <ins>background</ins>: Paragraph description of the history behind the anime's creation
-+ <ins>premiered</ins>: Season that the anime premiered (ranges from Spring 1961 to Winter 2019)
-+ <ins>broadcast</ins>: Scheduled broadcast time each week for the anime
-+ <ins>related</ins>: Dictionary recording of any known related anime series
-
 ### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc] - [sanders, stella, savannah]
 
 Before we were able to use the data, we first had to clean it by removing the unnecessary columns and replacing NA values with 0s. Following this, we also one-hot encoded all of the categorical data columns (i.e. genre, studio, source, producers, rating, type). One-hot encoding not only reduced the number of rows in our dataset by ensuring that each anime only occupied one row, but also prepared the dataset for constructing the vectors during the data modelling phase. 
 
-In addition to the categorical data columns, our dataset conveniently held a wealth of information for us in the form of a textual synopsis for each anime. To utilize of this, we used a pretrained word2vec model by Google that was trained on the Google News corpus (over 300 billion words) to output 300-dimensional word vectors. The idea was to use the word embeddings to capture the semantics of the summary in an attempt to use these features to find other anime with similar summaries in semantics. In order to ensure that the input to the model was standardized, the synopsis for each anime was pre-processed to ensure that they were properly formatted and consisted of only words of interest. We removed all punctuations and capitalization, as well as common words such as “a”, “an”, and “in” using the list of default stopwords used by MySQL’s MyISAM search indexes [3]. This significantly reduced the amount of words we were working with as the size of our word bank decreased from 34354 to 21259, and the maximum length of the synopses decreased from 540 to 290. We then computed a 1x300 **synopsis summary vector** for each anime by plugging in every word of the synopsis into the word2vec model and averaging all of the vectors. Note, fictional words specific to an anime (such as "Geass" or names like "Lelouch") may not generate a resulting word embedding, in which case the word is simply ignored in the final calculation of the synopsis summary vector.
+In addition to the categorical data columns, our dataset conveniently held a wealth of information for us in the form of a textual synopsis for each anime. To utilize of this, we used a pretrained word2vec model by Google that was trained on the Google News corpus (over 300 billion words) to output 300-dimensional word vectors. The idea was to use the word embeddings to capture the semantics of the summary in an attempt to use these features to find other anime with similar summaries in semantics. In order to ensure that the input to the model was standardized, the synopsis for each anime was pre-processed to ensure that they were properly formatted and consisted of only words of interest. We removed all punctuations and capitalization, as well as common words such as “a”, “an”, and “in” using the list of default stopwords used by MySQL’s MyISAM search indexes [4]. This significantly reduced the amount of words we were working with as the size of our word bank decreased from 34354 to 21259, and the maximum length of the synopses decreased from 540 to 290. We then computed a 1x300 **synopsis summary vector** for each anime by plugging in every word of the synopsis into the word2vec model and averaging all of the vectors. Note, fictional words specific to an anime (such as "Geass" or names like "Lelouch") may not generate a resulting word embedding, in which case the word is simply ignored in the final calculation of the synopsis summary vector.
 
 <p align='center'>
   <img src="/ML4Anime/graphs/synopsis_summary_vector.jpg" width="500"/>
@@ -199,6 +194,8 @@ Though this approach yielded interesting results, there are some aspects that co
 
 [1] Ellis, Theo J. "How the Anime Industry Has Grown Since 2004, According to Google Trends." _Anime Motivation_, animemotivation.com, 23 June 2018, https://animemotivation.com/anime-industry-growth-2004-to-2018/.      
 
-[2] Ellis, Theo J. "Why The Coronavirus Has Made Anime More Popular Than Ever." _Anime Motivation_, animemotivation.com, 24 March 2020, https://animemotivation.com/coronavirus-has-made-anime-more-popular/.    
+[2] Ellis, Theo J. "Why The Coronavirus Has Made Anime More Popular Than Ever." _Anime Motivation_, animemotivation.com, 24 March 2020, https://animemotivation.com/coronavirus-has-made-anime-more-popular/.      
 
-[3] "Full-Text Stopwords." _MySQL_, Oracle Corporation, https://dev.mysql.com/doc/refman/8.0/en/fulltext-stopwords.html.
+[3] Mock, Thomas. "Anime Dataset." _GitHub_, GitHub, Inc., 22 April 2019, https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-23.
+
+[4] "Full-Text Stopwords." _MySQL_, Oracle Corporation, https://dev.mysql.com/doc/refman/8.0/en/fulltext-stopwords.html.
