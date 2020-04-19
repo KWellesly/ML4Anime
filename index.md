@@ -6,26 +6,26 @@ Anime is a form of animated media with origins tied to Japan. A recent Google tr
 ## Data
 
 ### Dataset Description
-We utilized a dataset called tidy.csv that we found through GitHub that had been constructed from a kaggle dataset [3]. In our complete original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
+We utilized a dataset that we found through a GitHub project called tidy.csv that had been constructed from cleaning a kaggle dataset [3]. In our complete original dataset, we have 77,911 records with each consisting of 28 features. These features include: 
 
 |Name|Description|Type|
 |---|---|---|
 |animeID|Uniquely identifies each of the 13,631 included animes|dense| 
-|name|Anime title|textual|  
-|title_english|Anime title in English|textual|    
-|title_japanese|Anime title in Japanese|textual|
-|title_synonyms|Nicknames or other known names for the anime|textual|
-|type|Anime type such as Movie, Music, ONA, OVa, Special, TV, or Unknown|categorical|
+|name|Anime title|categorical|  
+|title_english|Anime title in English|categorical|    
+|title_japanese|Anime title in Japanese|categorical|
+|title_synonyms|Nicknames or other known names for the anime|categorical|
+|type|Anime type such as Movie, Music, ONA, OVA, Special, TV, or Unknown|categorical|
 |source|Anime source such as Original, Manga, Book, Game, Music, etc. (16 unique)|categorical|
 |producers|Producer of the anime (1073 unique)|categorical|
 |genre|Anime genre such as Action, Sci-Fi, Fantasy, etc. (40 unique)|categorical|
 |studio|The studio creating the anime (47 unique)|categorical|
 |episodes|The number of episodes in the anime (range from 1 to 3057)|dense|
-|status|Status of "Currently Airing" or "Finished Airing"|textual|
-|airing|TRUE if Status is "Currently Airing", FALSE otherwise|textual|
-|start_date|Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019) formatted as ymd|dense|
-|end_date|Date that the anime stopped airing (ranges from 2/2/1962 to 9/2/2019) formatted as ymd|dense|
-|duration|Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)|textual|
+|status|Status of "Currently Airing" or "Finished Airing"|categorical|
+|airing|TRUE if Status is "Currently Airing", FALSE otherwise|categorical|
+|start_date|Date that the anime started airing (ranges from 1/1/1917 to 2/3/2019) formatted as ymd|categorical|
+|end_date|Date that the anime stopped airing (ranges from 2/2/1962 to 9/2/2019) formatted as ymd|categorical|
+|duration|Episode length such as 24 min, 1 hr 55 min, etc. (ranges from 7 sec to 3 hr 51 min)|categorical|
 |rating|Audience rating such as None, G, PG, PG-13, R 17+, or R+|categorical|
 |score|Average rating for the anime (ranges from 1 to 10)|dense|
 |scored_by|Number of people who scored the anime (ranges from 0 to 1107955)|dense|
@@ -35,11 +35,9 @@ We utilized a dataset called tidy.csv that we found through GitHub that had been
 |favorites|Number of times the anime has been added to a person's favorites (ranges from 0 to 120331)|dense|
 |synopsis|Paragraph description of the anime storyline|textual|
 |background|Paragraph description of the history behind the anime's creation|textual|
-|premiered|Season that the anime premiered (ranges from Spring 1961 to Winter 2019)|textual|
-|broadcast|Scheduled broadcast time each week for the anime|textual|
-|related|Any known related anime series|textual|
-
-Note: the only features marked categorical are those that were later one-hot encoded
+|premiered|Season that the anime premiered (ranges from Spring 1961 to Winter 2019)|categorical|
+|broadcast|Scheduled broadcast time each week for the anime|categorical|
+|related|Any known related anime series|categorical|
 
 <p align='center'>
 <img src="/ML4Anime/graphs/Type Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;"><img src="/ML4Anime/graphs/Source Chart.PNG" style="float: left; width: 49%; margin-right: 1%; margin-bottom: 0.5em;">
