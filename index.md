@@ -75,7 +75,7 @@ We utilized a dataset that we found through a GitHub project called tidy.csv tha
 
 <p align='center'>Figure 5: Anime Count by Decade of Premier</p>
 
-### Pre-processing [techniques we used, cleaning text, one-hot encoding, normalizing, graphs, correlation matrix, word embeddings, talk about correlations, etc]
+### Pre-processing
 
 Before we were able to use the data, we first had to clean it by removing the unnecessary columns and replacing NA values with 0s. Although our dataset had 77,911 rows, many of these rows were duplicated multiple times for a single anime title. For example, the anime Cowboy Bebop was duplicated 17 times, once for each genre, each studio, and/or each producer that worked on the anime. To clean this up, we grouped all the anime together by title, and consolidated the information to remove the duplicated rows - ultimately condensing our dataset from 77,911 rows to 2,856 unique anime. Following this, we also one-hot encoded all of the categorical data columns (i.e. genre, studio, source, producers, rating, type). One-hot encoding not only reduced the number of rows in our dataset by ensuring that each anime only occupied one row, but also prepared the dataset for constructing the vectors during the data modelling phase.
 
@@ -176,7 +176,7 @@ Below is a deeper dive into a subset of specific anime within each cluster:
 </p>
 
 ## Modelling & Results
-### Modelling [average of the vector representation of each anime, what distance metric was used, etc]
+### Modelling 
 The KNN algorithm seeks to find the k most similar anime to the current anime. However, often times it is very difficult for users to be able to capture the full breadth of their anime preferences in a single anime. In our modified KNN algorithm, we allow users to input an arbitrary amount of anime that they like in an attempt to better understand and recommend anime catered to their preference. Assume a user inputs *n* different anime that they enjoyed. To model this, we average out the *n* feature vectors of each of those anime and compute KNN on this new vector that ideally captures the essence of each of their preferred animes.
 <p align='center'>
   <img src="/ML4Anime/graphs/KNN_input_vector.jpg" width="500"/>
@@ -216,7 +216,7 @@ For our KNN implementation, we compare the distance values of each feature vecto
 </p>
 which then ensures minimum angle, 0 degrees, is represented as 1-Cos(0) and thus a minimum Cosine distance value of 0 as well. In contrast, now for an angle of 90 degrees, Cosine distance = 1-Cos(90) = 1-Cos(-90) = 1, and for an angle of 180 degrees, Cosine distance = 1-Cos(180) = 2, the maximum Cosine distance value.
 
-### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] --> DON'T PANIC, IS WRITTEN SO IT DOESN'T SOUND LIKE A DRUNK STATISTICIAN
+### Results 
 
 EXAMPLE 1: From a single anime title: ['Attack on Titan']
 
@@ -293,8 +293,20 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 | **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
  
- As with the feature comparison trends, overall Cosine un-normalized KNN results prioritized high valued quatitative feature over small value features such as one-hot encoded features. In contrast, Cosine normalized KNN produced results that were heavily impacted by one-hot encoded data values like our synopsis encoded data. Seen below 
- 
+ As with the feature comparison trends, overall Cosine un-normalized KNN results prioritized high valued quatitative feature over small value features such as one-hot encoded features. In contrast, Cosine normalized KNN produced results that were heavily impacted by one-hot encoded data values like our synopsis encoded data. Seen below is an excerpt of our input synopses:
+ <p align='center'>
+  <img src="/ML4Anime/graphs/AoT_Series_wording_input.jpg" width="500"/>
+</p>
+ which heavily featured words like "recap" and "episode." Interestingly, our resulting recommendations from Cosine normalized KNN also produced recommended animes based on these wordings (see below).
+ <p align='center'>
+  <img src="/ML4Anime/graphs/AoT_Series_wording_input.jpg" width="500"/>
+</p>
+ Similarly, our Euclidean normalized KNN results also were heavily based on our synopsis key wordings (as seen below):
+<p align='center'>
+  <img src="/ML4Anime/graphs/AoT_Eu_wording_out-1.jpg" width="500"/>
+</p>
+  In contrast, our Euclidean un-normalized results were heavily based on high values quantitative features such as scored_by, and did not give results similar to our on-hot encoded features. We can conclude from these results that normalizing our data is imperative to giving equal emphasis to our one-hot features and quantitative data features, but may result in skew due to normalizing high value quantitative feature values.
+
 
  NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
  - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
