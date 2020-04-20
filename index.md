@@ -216,7 +216,100 @@ For our KNN implementation, we compare the distance values of each feature vecto
 </p>
 which then ensures minimum angle, 0 degrees, is represented as 1-Cos(0) and thus a minimum Cosine distance value of 0 as well. In contrast, now for an angle of 90 degrees, Cosine distance = 1-Cos(90) = 1-Cos(-90) = 1, and for an angle of 180 degrees, Cosine distance = 1-Cos(180) = 2, the maximum Cosine distance value.
 
-### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results]
+### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] --> DON'T PANIC, IS WRITTEN SO IT DOESN'T SOUND LIKE A DRUNK STATISTICIAN
+
+EXAMPLE 1, From a single anime title: ['Attack on Titan']
+Cosine:
+ - unaltered:
+    - std dist of inputs: 1.1102230246251565e-16 = ~0
+    - dists = (SAO) 4.530671473179648e-05, (DBall Z) 4.819235587816273e-05, (CG: Lelouch R2) 5.287712560930746e-05, (Death Note) 5.83510934309972e-05, (One Punch) 0.00015996019294139963
+    - avg dist = 7.29374965183327e-05
+ - normalized:
+    - std dist of inputs: 2.220446049250313e-16 = ~0
+    - dists = (AoT2) 0.26543022986850695, (FullmetalA:B) 0.3679197969434186, (Death Note) 0.3889958931658123, (CG: Lelouch) 0.4021520815895975, (CG: Lelouch R2) 0.44321354005664404
+    - avg dist = 0.37354230832479585
+Euclidean:
+ - unaltered:
+    - std dist of inputs: 0
+    - dists = (SAO) 68802.63893112267, (Death Note) 132434.60037360518, (FullmetalA:B) 261364.26396249462, (One Punch) 384929.0819958142, (TokyGh) 459418.3602375047
+    - avg dist = 261389.7891001083
+ - normalized:
+    - std dist of inputs: 0
+    - dists = (AoT2) 17.510729395599363, (CG: Lelouch) 21.16861555221369, (CG: Lelouch R2) 21.6011141401997, (FullmetalA:B) 22.11454385187206, (AkagaKill) 22.316987243582993
+    - avg dist = 20.94239803669356
+
+EXAMPLE 2, From a single series of anime:
+['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
+INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' HAVE SYNOPSIS KEY WORD RECAP
+Cosine:
+ - unaltered:
+    - std dist of inputs: 0.002418394815451697
+    - dists = (anohana) 9.243968509209388e-06, (Madoka Movie:Rebellion) 1.4041475445925045e-05, (KnB) 1.4216072585004902e-05, (VampKnight) 2.5147262486702182e-05, (MaidSama) 2.685434382887486e-05
+    - avg dist = 1.7900624571143276e-05
+ - normalized:
+    - std dist of inputs: 0.7088001950884713
+    - dists = (Gun Sam Recap) 0.12449084087983442, (Mar Comes in Lion, Recap) 0.1873596877060505, (Berserk: RW, Recap) 0.24814293848774793, (Can't Play H, Recap) 0.26447939233367723, (Tsukigakirei:FH Roadsofar, Recap) 0.3143294973705817
+         - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
+    - avg dist = 0.22776047135557836
+Euclidean:
+ - unaltered:
+    - std dist of inputs: 1339680.4229659091
+    - dists = 10003.85877635081, 10933.50047045591, 13918.156580823528, 16494.108909603467, 18196.803745831003
+    - avg dist = 13909.285696612944
+ - normalized:
+    - std dist of inputs: 33.11076563385372
+    - dists = (Marches Comes in, Recap) 21.316819634794932, (P4, Recap) 27.079444891045924, (FullmetalA: Prem) 29.639697080204925, (Shiki Spec) 29.800487426576534, (Robot Girls Z) 30.68676447637702
+    - avg dist = 27.704642701799866
+ NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
+
+EXAMPLE 3, From a relatively similar assortment of anime:
+['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
+SHARED THEMES: survival, human, hero, villain, criminal, police, school, attack
+Cosine:
+ - unaltered:
+    - std dist of inputs: 0.0017375156554714224
+    - dists = (FA) 7.402229651454206e-06, (FutureDiary) 9.449234395830786e-06, (Elfen Lied) 9.735515303366249e-06, (parasyte) 2.1410417397671466e-05, (My Teen RomCom) 2.5915295883027767e-05
+    - avg dist = 1.4782538526270095e-05
+ - normalized:
+    - std dist of inputs: 0.2960341531481663
+    - dists = (FA:B) 0.5021160342395171, (BNHA) 0.5136357132006636, (CG: Lelouch) 0.5229063917691104, (Death Note) 0.5254783458286789, (CG: Lelouch R2) 0.5267359451522967
+    - avg dist = 0.5181744860380534
+Euclidean:
+ - unaltered: 1149911.695198837
+    - std dist of inputs:
+    - dists = (OuranHost) 8961.677379548775, (MaidSama) 13454.206774389815, (My Teen RomCom) 15365.794548705582, (Princess Mononoke) 18975.944106107854, (Overlord) 19197.709996068443
+    - avg dist = 15191.066560964095
+ - normalized:
+    - std dist of inputs: 20.277913908002063
+    - dists = (JoJo:diamond) 12.126737693135617, (Re:CREATORS) 12.391090152953039, (AkagaKill) 12.403364654252414, (Drifters) 12.473460788797862, (JoJo:Stardust) 12.762186996451366
+    - avg dist = 12.431368057118059
+  ESP FOR GROUPS OF SIMILAR ANIMES, IF INPUT DESCRIPTIONS HAVE OVERLAPPING WORDS, OUTPUT ANIME DESCRIPTIONS HAVE SIMILAR WORDS
+
+EXAMPLE 4, From different anime genres:
+['AKIRA', 'Desert Punk', 'Naruto', 'D.N.Angel', 'Rurouni Kenshin']
+THEMES: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
+Cosine:
+ - unaltered:
+    - std dist of inputs: 8.944825003198709e-05
+    - dists = (anohana) 1.0174170220200729e-05, (parasyte) 1.365511339768144e-05, (elfen lied) 1.365511339768144e-05, (futdiary) 2.9363935019621756e-05, (VampKn) 3.679790838173602e-05
+    - avg dist = 2.3868724349518367e-05
+ - normalized:
+    - std dist of inputs: 0.5418947476198352
+    - dists = (Nar:Shipp) 0.5164024347689984, (Bleach) 0.5350601782020765, (DBall Z) 0.5434340748772342, (TokyGhA) 0.5957931835361809, (Reborn!) 0.5970884948336466
+    - avg dist = 0.5575556732436272
+   SIMILARITIES IN GENRE??? ESP ACTION, MAGIC
+Euclidean:
+ - unaltered:
+    - std dist of inputs: 50161.62563486801
+    - dists = (HQ 2) 6305.243367556172, (Nisemonogatari) 10319.209978109777, (School Day) 12258.909680448818, (WolfChil) 12704.433826394961, (KnB 2) 12971.85888178294
+    - avg dist = 10911.931146858533
+ - normalized:
+    - std dist of inputs: 12.048349500982189
+    - dists = (JoJo:Star) 11.159525380754072, (Drifters) 11.248731517957328, (JoJo) 11.547824097220207, (Evangelion:3) 11.63044258371916, (Re:CREATORS) 11.683175678594893
+    - avg dist = 11.453939851649132
+  RETURNED THEMES: friend, pain, attack, threat, battle, bloody, kill
+
+UNALTERED, EUCLIDEAN ALWAYS SKEWED TOWARD MAINSTREAM VALUES, ESP IF INCLUDE A MAINSTREAM ANIME (large scored_by count)
 
 
 ## Conclusion
