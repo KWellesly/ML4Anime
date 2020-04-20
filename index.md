@@ -230,26 +230,15 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 EXAMPLE 2, From a single series of anime:
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
 INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' HAVE SYNOPSIS KEY WORD RECAP
-Cosine:
- - unaltered:
-    - std dist of inputs: 2.42e-03
-    - dists = (anohana) 9.24e-06, (Madoka Movie:Rebellion) 1.40e-05, (KnB) 1.42e-05, (VampKnight) 2.51e-05, (MaidSama) 2.69e-05
-    - avg dist = 1.79e-05
- - normalized:
-    - std dist of inputs: 0.71
-    - dists = (Gun Sam Recap) 0.12, (Mar Comes in Lion, Recap) 0.19, (Berserk: RW, Recap) 0.25, (Can't Play H, Recap) 0.26, (Tsukigakirei:FH Roadsofar, Recap) 0.31
-         - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
-    - avg dist = 0.23
-Euclidean:
- - unaltered:
-    - std dist of inputs: 1339680.42
-    - dists = 10003.86, 10933.50, 13918.16, 16494.11, 18196.80
-    - avg dist = 13909.29
- - normalized:
-    - std dist of inputs: 33.11
-    - dists = (Marches Comes in, Recap) 21.32, (P4, Recap) 27.08, (FullmetalA: Prem) 29.64, (Shiki Spec) 29.80, (Robot Girls Z) 30.68
-    - avg dist = 27.70
+
+|               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| STD Distance  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
+| Distances     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
+| AVG Distances | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
+    
  NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
+ - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
 
 EXAMPLE 3, From a relatively similar assortment of anime:
 ['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
