@@ -218,25 +218,12 @@ which then ensures minimum angle, 0 degrees, is represented as 1-Cos(0) and thus
 
 ### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] --> DON'T PANIC, IS WRITTEN SO IT DOESN'T SOUND LIKE A DRUNK STATISTICIAN
 
-EXAMPLE 1, From a single anime title: ['Attack on Titan']
-Cosine:
- - unaltered:
-    - std dist of inputs: 1.11e-16 = ~0
-    - dists = (SAO) 4.53e-05, (DBall Z) 4.81e-05, (CG: Lelouch R2) 5.29e-05, (Death Note) 5.84e-05, (One Punch) 1.60e-04 
-    - avg dist = 7.29e-05
- - normalized:
-    - std dist of inputs: 2.22e-16 = ~0
-    - dists = (AoT2) 0.27, (FullmetalA:B) 0.37, (Death Note) 0.39, (CG: Lelouch) 0.40, (CG: Lelouch R2) 0.44
-    - avg dist = 0.37
-Euclidean:
- - unaltered:
-    - std dist of inputs: 0
-    - dists = (SAO) 68802.64, (Death Note) 132434.60, (FullmetalA:B) 261364.26, (One Punch) 384929.08, (TokyGh) 459418.36
-    - avg dist = 261389.79
- - normalized:
-    - std dist of inputs: 0
-    - dists = (AoT2) 17.51, (CG: Lelouch) 21.17, (CG: Lelouch R2) 21.60, (FullmetalA:B) 22.11, (AkagaKill) 22.32
-    - avg dist = 20.94
+EXAMPLE 1: From a single anime title: ['Attack on Titan']
+|Cosine STD Dist|Cosine Normalized STD Dist|Cosine Dist|Cosine Normalized Dist|Cosine AVG Dist|Cosine Normalized AVG Dist|Euclidean STD Dist|Euclidean Normalized STD Dist|Euclidean Dist|Euclidean Normalized Dist|CEuclideanosine AVG Dist|Euclidean Normalized AVG Dist|
+|---|---|---|---|---|---|---|---|---|---|---|---|
+
+|1.11e-16|2.22e-16|(SAO) 4.53e-05, (DBall Z) 4.81e-05, (CG: Lelouch R2) 5.29e-05, (Death Note) 5.84e-05, (One Punch) 1.60e-04|(AoT2) 0.27, (FullmetalA:B) 0.37, (Death Note) 0.39, (CG: Lelouch) 0.40, (CG: Lelouch R2) 0.44|7.29e-05|0.37|0|0|(SAO) 68802.64, (Death Note) 132434.60, (FullmetalA:B) 261364.26, (One Punch) 384929.08, (TokyGh) 459418.36|(AoT2) 17.51, (CG: Lelouch) 21.17, (CG: Lelouch R2) 21.60, (FullmetalA:B) 22.11, (AkagaKill) 22.32|261389.79|20.94|
+
 
 EXAMPLE 2, From a single series of anime:
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
