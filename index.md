@@ -218,25 +218,13 @@ which then ensures minimum angle, 0 degrees, is represented as 1-Cos(0) and thus
 
 ### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] --> DON'T PANIC, IS WRITTEN SO IT DOESN'T SOUND LIKE A DRUNK STATISTICIAN
 
-EXAMPLE 1, From a single anime title: ['Attack on Titan']
-Cosine:
- - unaltered:
-    - std dist of inputs: 1.11e-16 = ~0
-    - dists = (SAO) 4.53e-05, (DBall Z) 4.81e-05, (CG: Lelouch R2) 5.29e-05, (Death Note) 5.84e-05, (One Punch) 1.60e-04 
-    - avg dist = 7.29e-05
- - normalized:
-    - std dist of inputs: 2.22e-16 = ~0
-    - dists = (AoT2) 0.27, (FullmetalA:B) 0.37, (Death Note) 0.39, (CG: Lelouch) 0.40, (CG: Lelouch R2) 0.44
-    - avg dist = 0.37
-Euclidean:
- - unaltered:
-    - std dist of inputs: 0
-    - dists = (SAO) 68802.64, (Death Note) 132434.60, (FullmetalA:B) 261364.26, (One Punch) 384929.08, (TokyGh) 459418.36
-    - avg dist = 261389.79
- - normalized:
-    - std dist of inputs: 0
-    - dists = (AoT2) 17.51, (CG: Lelouch) 21.17, (CG: Lelouch R2) 21.60, (FullmetalA:B) 22.11, (AkagaKill) 22.32
-    - avg dist = 20.94
+EXAMPLE 1: From a single anime title: ['Attack on Titan']
+|               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| STD Distance  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
+| Distances     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
+| AVG Distances | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
+
 
 EXAMPLE 2, From a single series of anime:
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
