@@ -176,7 +176,7 @@ Below is a deeper dive into a subset of specific anime within each cluster:
 </p>
 
 ## Modelling & Results
-### Modelling [average of the vector representation of each anime, what distance metric was used, etc]
+### Modelling [average of the vector representation of each anime, what distance metric was used, etc] [Linsey]
 The KNN algorithm seeks to find the k most similar anime to the current anime. However, often times it is very difficult for users to be able to capture the full breadth of their anime preferences in a single anime. In our modified KNN algorithm, we allow users to input an arbitrary amount of anime that they like in an attempt to better understand and recommend anime catered to their preference. Assume a user inputs *n* different anime that they enjoyed. To model this, we average out the *n* feature vectors of each of those anime and compute KNN on this new vector that ideally captures the essence of each of their preferred animes.
 <p align='center'>
   <img src="/ML4Anime/graphs/KNN_input_vector.jpg" width="500"/>
@@ -192,7 +192,7 @@ The KNN algorithm seeks to find the k most similar anime to the current anime. H
 </p>
 
 There were two distance metrics that we considered for our modelling. The first, and preferred method, was using cosine similarity. Cosine distance is defined as:
-$\cos\theta = \frac{\overrightarrow{a}\cdot \overrightarrow{b}}{\left \| \overrightarrow{a} \right \|\left \| \overrightarrow{b} \right \|}
+\\[\cos\theta = \frac{\overrightarrow{a}\cdot \overrightarrow{b}}{\left \| \overrightarrow{a} \right \|\left \| \overrightarrow{b} \right \|}\\]
 and measures the angle between our input average feature vector and each of the feature vectors for anime in the dataset. We preferred cosine similarity as a distance measurement due to the way our dataset values were distributed.
 To process our data, we one-hot encoded our categorical data values, like genre, studio, and source. These columns were represented in our processed data in 1s and 0s. In comparison, our originally quantitative feature data values, such as episodes, which had values ranging from 1 to 1787, and scored_by, with minimum at 8 and maximum value 1107995, were much greater than our one-hot encoded values, and could possibly skew our KNN results towards the originally quantitative features. With this in mind, we implemented Cosine similarity as a distance measurement because it focuses on the angle between the vectors, and does not consider the respective weights or magnitudes of the vectors.
 <p align='center'>
@@ -203,11 +203,11 @@ To process our data, we one-hot encoded our categorical data values, like genre,
 </p>
 
 Our alternative distance metric was using Euclidean distance, measured by:
-$\sqrt{\left \| \overrightarrow{a}-\overrightarrow{b} \right \|^{2}}
+\\[\sqrt{\left \| \overrightarrow{a}-\overrightarrow{b} \right \|^{2}}\\]
 Euclidean distance, in contrast to Cosine distance, is similar to measuring the actual distance between the two vectors, and is thus affected by angle and magnitude of the vectors. We implemented Euclidean distance as an alternative distance measurement because we were interested in seeing how the different distance functions would perform comparatively to each other.
 
 
-### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] - [linsey]
+### Results [show results of KNN before normalizing/PCA, then after KNN on normalized or PCA'd dataset, show examples of results, no way to validate results] - [Linsey]
 
 
 ## Conclusion [Stella]
