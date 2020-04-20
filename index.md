@@ -226,6 +226,43 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 | **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
 
+**Quantitative Feature Comparisons from EXAMPLE 1 (SINGLE INPUT)**
+**scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|56588.2|364104.0584099551|
+|Cosine|yes|67307.24|383189.72831144626|
+
+**popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|3.84|32.42221460665511|
+|Cosine|yes|2.92|20.449938875214272|
+
+**episodes** (Mean 18.50858143607706, St.Dev 44.939364036423385)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|11.64|119.22164233057687|
+|Cosine|yes|2.56|19.15202339179858|
+
+**rank** (Mean 3453.8707530647985, St.Dev 2736.869440698026)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|67.52000000000001|598.1989635564408|
+|Cosine|yes|15.479999999999999|83.25262758616091|
+
+**members** (Mean 100507.58774080561, St.Dev 164257.15112195478)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|80586.4|516539.4072722816|
+|Cosine|yes|81012.24|474466.3075389021|
+
+**favorites** (Mean 1610.3432574430824, St.Dev 6211.037964762604)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|5898.76|31280.509391632353|
+|Cosine|yes|6481.640000000001|38706.68688224297|
+
 
 EXAMPLE 2, From a single series of anime:
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
@@ -239,6 +276,56 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
     
  NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
  - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
+ 
+**Quantitative Feature Comparisons from EXAMPLE 1 (SERIES INPUT)**
+**scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|18512.48|107719.31402492312|
+|Cosine|yes|8331.84|52104.241961667576|
+|Euclidean|yes|2250.4639999999995|11524.22493012003|
+|Euclidean|no|14700.0|92020.48336973676|
+
+**popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|21.456|134.36160165761646|
+|Cosine|yes|501.24799999999993|3472.135746194264|
+|Euclidean|yes|190.304|1020.3320243920602|
+|Euclidean|no|127.87200000000003|799.2132631532087|
+
+**episodes** (Mean 18.50858143607706, St.Dev 44.939364036423385)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|1.6479999999999997|9.346657156438337|
+|Cosine|yes|0.7040000000000001|4.4|
+|Euclidean|yes|0.16|0.8944271909999159|
+|Euclidean|no|0.36800000000000005|2.33238075793812|
+
+**rank** (Mean 3453.8707530647985, St.Dev 2736.869440698026)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|no|Cosine|154.176|967.1896194645599|
+|yes|Cosine|458.52799999999996|2541.881696696367|
+|yes|Euclidean|358.15999999999997|1908.3776355847394|
+|no|Euclidean|262.15999999999997|1368.6231037067876|
+
+**members** (Mean 100507.58774080561, St.Dev 164257.15112195478)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|31336.432|180696.49885418368|
+|Cosine|yes|15927.472|99601.60660069695|
+|Euclidean|yes|3645.4080000000004|18787.324007425857|
+|Euclidean|no|24489.951999999997|153209.48038629984|
+
+**favorites** (Mean 1610.3432574430824, St.Dev 6211.037964762604)
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|1097.76|6265.180795475897|
+|Cosine|yes|44.368|277.3334455127978|
+|Euclidean|yes|7.312|38.2172735814579|
+|Euclidean|no|639.008|639.008|
+
 
 EXAMPLE 3, From a relatively similar assortment of anime:
 ['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
