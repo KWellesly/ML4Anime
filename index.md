@@ -222,43 +222,49 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **STD Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
+| **STD Input Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
 | **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
 
 **Quantitative Feature Comparisons from EXAMPLE 1 (SINGLE INPUT)**
 
 **scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|56588.2|364104.0584099551|
 |Cosine|yes|67307.24|383189.72831144626|
 
 **popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|3.84|32.42221460665511|
 |Cosine|yes|2.92|20.449938875214272|
 
 **episodes** (Mean 18.50858143607706, St.Dev 44.939364036423385)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|11.64|119.22164233057687|
 |Cosine|yes|2.56|19.15202339179858|
 
 **rank** (Mean 3453.8707530647985, St.Dev 2736.869440698026)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|67.52000000000001|598.1989635564408|
 |Cosine|yes|15.479999999999999|83.25262758616091|
 
 **members** (Mean 100507.58774080561, St.Dev 164257.15112195478)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|80586.4|516539.4072722816|
 |Cosine|yes|81012.24|474466.3075389021|
 
 **favorites** (Mean 1610.3432574430824, St.Dev 6211.037964762604)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|5898.76|31280.509391632353|
@@ -271,16 +277,17 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **STD Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
+| **STD Input Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
 | **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
     
  NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
  - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
  
-**Quantitative Feature Comparisons from EXAMPLE 1 (SERIES INPUT)**
+**Quantitative Feature Comparisons from EXAMPLE 2 (SERIES INPUT)**
 
 **scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|18512.48|107719.31402492312|
@@ -289,6 +296,7 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 |Euclidean|no|14700.0|92020.48336973676|
 
 **popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|21.456|134.36160165761646|
@@ -297,6 +305,7 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 |Euclidean|no|127.87200000000003|799.2132631532087|
 
 **episodes** (Mean 18.50858143607706, St.Dev 44.939364036423385)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|1.6479999999999997|9.346657156438337|
@@ -305,6 +314,7 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 |Euclidean|no|0.36800000000000005|2.33238075793812|
 
 **rank** (Mean 3453.8707530647985, St.Dev 2736.869440698026)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |no|Cosine|154.176|967.1896194645599|
@@ -313,6 +323,7 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 |no|Euclidean|262.15999999999997|1368.6231037067876|
 
 **members** (Mean 100507.58774080561, St.Dev 164257.15112195478)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|31336.432|180696.49885418368|
@@ -321,6 +332,7 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 |Euclidean|no|24489.951999999997|153209.48038629984|
 
 **favorites** (Mean 1610.3432574430824, St.Dev 6211.037964762604)
+
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|1097.76|6265.180795475897|
@@ -335,7 +347,7 @@ SHARED THEMES: survival, human, hero, villain, criminal, police, school, attack
 
 |               | Cosine Unaltered                                                                                                                                                         | Cosine Normalized                                                                                                                                                              | Euclidean Unaltered                                                                                                                                                                           | Euclidean Normalized                                                                                                                                                                                           |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **STD Distance**  | 1.73 e-03                                                                                                                                                                | 0.29                                                                                                                                                                           | 1149911.69                                                                                                                                                                                    | 20.27                                                                                                                                                                                                          |
+| **STD Input Distance**  | 1.73 e-03                                                                                                                                                                | 0.29                                                                                                                                                                           | 1149911.69                                                                                                                                                                                    | 20.27                                                                                                                                                                                                          |
 | **Distances**     | -**Fullmetal Alchemist**: 7.40e-06<br> -**Future Diary**: 9.45e-06<br> -**Elfen Lied**: 9.74e-06<br> -**Parasyte**: 2.14 e-05<br> -**My Teen Romantic Comedy**: 2.59e-05 | -**Fullmetal Alchemist: Brotherhood**: 0.50<br> -**My Hero Academia**: 0.51<br> -**Code Geass: Lelouch**: 0.52<br> -**Death Note**: 0.52<br> -**Code Geass: Lelouch R2**: 0.52 | -**Ouran High School Host Club**: 8961.68<br> -**Kaichou Wa Maid-Sama**: 13454.21<br> -**My Teen Romantic Comedy**: 15365.79<br> -**Princess Mononoke**: 18975.94<br> -**Overlord**: 19197.70 | -**JoJo's Bizarre Adventures: Diamond is Unbreakable**: 12.12<br> -**Re: CREATORS**: 12.39<br> -**Akame ga Kill**: 12.40<br> -**Drifters**: 12.47<br> -**JoJo's Bizarre Adventure: Stardust Crusadors**: 12.76 |
 | **AVG Distances** | 1.47e-05                                                                                                                                                                 | 0.52                                                                                                                                                                           | 15191.06                                                                                                                                                                                      | 12.43                                                                                                                                                                                                          |
 
@@ -347,10 +359,11 @@ THEMES: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
 
 |               | Cosine Unaltered                                                                                                                          | Cosine Normalized                                                                                               | Euclidean Unaltered                                                                                                                              | Euclidean Normalized                                                                                                                                                         |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **STD Distance**  | 8.94e-05                                                                                                                                  | 0.54                                                                                                            | 50161.62                                                                                                                                         | 12.04                                                                                                                                                                        |
+| **STD Input Distance**  | 8.94e-05                                                                                                                                  | 0.54                                                                                                            | 50161.62                                                                                                                                         | 12.04                                                                                                                                                                        |
 | **Distances**     | -**Anohana**: 1.02-05<br>-**Parasyte**: 1.36e-05<br>-**Elfen Lied**: 1.36e-05<br>-**Future Diary**: 2.93e-05<br>-**Vampire Knights**: 3.67e-05 | -**Naruto Shippuden**: 0.51<br>-**Bleach**: 0.53<br>-**Dragonball Z**: 0.54<br>-**Tokyo Ghoul**: 0.59<br>-**Reborn!**: 0.59 | -**HQ 2**: 6305.24<br>-**Nisemonogatari**: 10319.20<br>-**School Day**: 12258.90<br>-**Wolf Children**: 12704.43<br>-**Kuroko no Basket 2**: 12971.85 | -**JoJo's Bizzare Adventure: Stardust Crusaders**: 11.15<br>-**Drifters**: 11.24<br>-**Jojo's Bizarre Adventure**: 11.54<br>-**Evangelion 3.0**: 11.63<br>-**Re:CREATORS**: 11.68 |
 | **AVG Distances** | 2.38e-05                                                                                                                                  | 0.55                                                                                                            | 10911.93                                                                                                                                         | 11.45                                                                                                                                                                        |
 
+From our results, we can see for our dataset that on average, Euclidean un-normalized KNN preformed the weakest (highest average output distance). This is likely due to the range of values we have in our dataset. We processed our categorical data into one-hot encoding, as well as retained quantitative values. In comparison, the range and variation of the quantitative values are very high. For example, quatitative feature scored_by has a range from 8 to 1107955, mean of 51396.6469352014, and a standard deviation of 96648.63221428858. Without normalization, using Euclidean distance, which accounts for weight of vectors, as well as the angle between them, will be skewed toward higher values, such as scored_by. In contrast, Cosine un-normalized KNN did a better  
 UNALTERED, EUCLIDEAN ALWAYS SKEWED TOWARD MAINSTREAM VALUES, ESP IF INCLUDE A MAINSTREAM ANIME (large scored_by count)
 
 KEY TAKEAWAYS FROM RESULTS:
