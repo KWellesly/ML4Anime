@@ -288,26 +288,11 @@ Euclidean:
 EXAMPLE 4, From different anime genres:
 ['AKIRA', 'Desert Punk', 'Naruto', 'D.N.Angel', 'Rurouni Kenshin']
 THEMES: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
-Cosine:
- - unaltered:
-    - std dist of inputs: 8.94e-05
-    - dists = (anohana) 1.02-05, (parasyte) 1.36e-05, (elfen lied) 1.36e-05, (futdiary) 2.93e-05, (VampKn) 3.67e-05
-    - avg dist = 2.38e-05
- - normalized:
-    - std dist of inputs: 0.54
-    - dists = (Nar:Shipp) 0.51, (Bleach) 0.53, (DBall Z) 0.54, (TokyGhA) 0.59, (Reborn!) 0.59
-    - avg dist = 0.55
-   SIMILARITIES IN GENRE??? ESP ACTION, MAGIC
-Euclidean:
- - unaltered:
-    - std dist of inputs: 50161.62
-    - dists = (HQ 2) 6305.24, (Nisemonogatari) 10319.20, (School Day) 12258.90, (WolfChil) 12704.43, (KnB 2) 12971.85
-    - avg dist = 10911.93
- - normalized:
-    - std dist of inputs: 12.04
-    - dists = (JoJo:Star) 11.15, (Drifters) 11.24, (JoJo) 11.54, (Evangelion:3) 11.63, (Re:CREATORS) 11.68
-    - avg dist = 11.45
-  RETURNED THEMES: friend, pain, attack, threat, battle, bloody, kill
+|               | Cosine Unaltered                                                                                                                          | Cosine Normalized                                                                                               | Euclidean Unaltered                                                                                                                              | Euclidean Normalized                                                                                                                                                         |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| STD Distance  | 8.94e-05                                                                                                                                  | 0.54                                                                                                            | 50161.62                                                                                                                                         | 12.04                                                                                                                                                                        |
+| Distances     | **Anohana**: 1.02-05<br>**Parasyte**: 1.36e-05<br>**Elfen Lied**: 1.36e-05<br>**Future Diary**: 2.93e-05<br>**Vampire Knights**: 3.67e-05 | **Naruto Shippuden**: 0.51<br>**Bleach**: 0.53<br>**Dragonball Z**: 0.54<br>**Tokyo Ghoul**: 0.59<br>**Reborn!**: 0.59 | **HQ 2**: 6305.24<br>**Nisemonogatari**: 10319.20<br>**School Day**: 12258.90<br>**Wolf Children**: 12704.43<br>**Kuroko no Basket 2**: 12971.85 | **JoJo's Bizzare Adventure: Stardust Crusaders**: 11.15<br>**Drifters**: 11.24<br>**Jojo's Bizarre Adventure**: 11.54<br>**Evangelion 3.0**: 11.63<br>**Re:CREATORS**: 11.68 |
+| AVG Distances | 2.38e-05                                                                                                                                  | 0.55                                                                                                            | 10911.93                                                                                                                                         | 11.45                                                                                                                                                                        |
 
 UNALTERED, EUCLIDEAN ALWAYS SKEWED TOWARD MAINSTREAM VALUES, ESP IF INCLUDE A MAINSTREAM ANIME (large scored_by count)
 
