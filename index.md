@@ -221,45 +221,45 @@ which then ensures minimum angle, 0 degrees, is represented as 1-Cos(0) and thus
 EXAMPLE 1, From a single anime title: ['Attack on Titan']
 Cosine:
  - unaltered:
-    - std dist of inputs: 1.1102230246251565e-16 = ~0
-    - dists = (SAO) 4.530671473179648e-05, (DBall Z) 4.819235587816273e-05, (CG: Lelouch R2) 5.287712560930746e-05, (Death Note) 5.83510934309972e-05, (One Punch) 0.00015996019294139963
-    - avg dist = 7.29374965183327e-05
+    - std dist of inputs: 1.11e-16 = ~0
+    - dists = (SAO) 4.53e-05, (DBall Z) 4.81e-05, (CG: Lelouch R2) 5.29e-05, (Death Note) 5.84e-05, (One Punch) 1.60e-04 
+    - avg dist = 7.29e-05
  - normalized:
-    - std dist of inputs: 2.220446049250313e-16 = ~0
-    - dists = (AoT2) 0.26543022986850695, (FullmetalA:B) 0.3679197969434186, (Death Note) 0.3889958931658123, (CG: Lelouch) 0.4021520815895975, (CG: Lelouch R2) 0.44321354005664404
-    - avg dist = 0.37354230832479585
+    - std dist of inputs: 2.22e-16 = ~0
+    - dists = (AoT2) 0.27, (FullmetalA:B) 0.37, (Death Note) 0.39, (CG: Lelouch) 0.40, (CG: Lelouch R2) 0.44
+    - avg dist = 0.37
 Euclidean:
  - unaltered:
     - std dist of inputs: 0
-    - dists = (SAO) 68802.63893112267, (Death Note) 132434.60037360518, (FullmetalA:B) 261364.26396249462, (One Punch) 384929.0819958142, (TokyGh) 459418.3602375047
-    - avg dist = 261389.7891001083
+    - dists = (SAO) 68802.64, (Death Note) 132434.60, (FullmetalA:B) 261364.26, (One Punch) 384929.08, (TokyGh) 459418.36
+    - avg dist = 261389.79
  - normalized:
     - std dist of inputs: 0
-    - dists = (AoT2) 17.510729395599363, (CG: Lelouch) 21.16861555221369, (CG: Lelouch R2) 21.6011141401997, (FullmetalA:B) 22.11454385187206, (AkagaKill) 22.316987243582993
-    - avg dist = 20.94239803669356
+    - dists = (AoT2) 17.51, (CG: Lelouch) 21.17, (CG: Lelouch R2) 21.60, (FullmetalA:B) 22.11, (AkagaKill) 22.32
+    - avg dist = 20.94
 
 EXAMPLE 2, From a single series of anime:
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
 INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' HAVE SYNOPSIS KEY WORD RECAP
 Cosine:
  - unaltered:
-    - std dist of inputs: 0.002418394815451697
-    - dists = (anohana) 9.243968509209388e-06, (Madoka Movie:Rebellion) 1.4041475445925045e-05, (KnB) 1.4216072585004902e-05, (VampKnight) 2.5147262486702182e-05, (MaidSama) 2.685434382887486e-05
-    - avg dist = 1.7900624571143276e-05
+    - std dist of inputs: 2.42e-03
+    - dists = (anohana) 9.24e-06, (Madoka Movie:Rebellion) 1.40e-05, (KnB) 1.42e-05, (VampKnight) 2.51e-05, (MaidSama) 2.69e-05
+    - avg dist = 1.79e-05
  - normalized:
-    - std dist of inputs: 0.7088001950884713
-    - dists = (Gun Sam Recap) 0.12449084087983442, (Mar Comes in Lion, Recap) 0.1873596877060505, (Berserk: RW, Recap) 0.24814293848774793, (Can't Play H, Recap) 0.26447939233367723, (Tsukigakirei:FH Roadsofar, Recap) 0.3143294973705817
+    - std dist of inputs: 0.71
+    - dists = (Gun Sam Recap) 0.12, (Mar Comes in Lion, Recap) 0.19, (Berserk: RW, Recap) 0.25, (Can't Play H, Recap) 0.26, (Tsukigakirei:FH Roadsofar, Recap) 0.31
          - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
-    - avg dist = 0.22776047135557836
+    - avg dist = 0.23
 Euclidean:
  - unaltered:
-    - std dist of inputs: 1339680.4229659091
-    - dists = 10003.85877635081, 10933.50047045591, 13918.156580823528, 16494.108909603467, 18196.803745831003
-    - avg dist = 13909.285696612944
+    - std dist of inputs: 1339680.42
+    - dists = 10003.86, 10933.50, 13918.16, 16494.11, 18196.80
+    - avg dist = 13909.29
  - normalized:
-    - std dist of inputs: 33.11076563385372
-    - dists = (Marches Comes in, Recap) 21.316819634794932, (P4, Recap) 27.079444891045924, (FullmetalA: Prem) 29.639697080204925, (Shiki Spec) 29.800487426576534, (Robot Girls Z) 30.68676447637702
-    - avg dist = 27.704642701799866
+    - std dist of inputs: 33.11
+    - dists = (Marches Comes in, Recap) 21.32, (P4, Recap) 27.08, (FullmetalA: Prem) 29.64, (Shiki Spec) 29.80, (Robot Girls Z) 30.68
+    - avg dist = 27.70
  NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
 
 EXAMPLE 3, From a relatively similar assortment of anime:
@@ -267,22 +267,22 @@ EXAMPLE 3, From a relatively similar assortment of anime:
 SHARED THEMES: survival, human, hero, villain, criminal, police, school, attack
 Cosine:
  - unaltered:
-    - std dist of inputs: 0.0017375156554714224
-    - dists = (FA) 7.402229651454206e-06, (FutureDiary) 9.449234395830786e-06, (Elfen Lied) 9.735515303366249e-06, (parasyte) 2.1410417397671466e-05, (My Teen RomCom) 2.5915295883027767e-05
-    - avg dist = 1.4782538526270095e-05
+    - std dist of inputs: 1.73e-03
+    - dists = (FA) 7.40e-06, (FutureDiary) 9.45e-06, (Elfen Lied) 9.74e-06, (parasyte) 2.14e-05, (My Teen RomCom) 2.59e-05
+    - avg dist = 1.47e-05
  - normalized:
-    - std dist of inputs: 0.2960341531481663
-    - dists = (FA:B) 0.5021160342395171, (BNHA) 0.5136357132006636, (CG: Lelouch) 0.5229063917691104, (Death Note) 0.5254783458286789, (CG: Lelouch R2) 0.5267359451522967
-    - avg dist = 0.5181744860380534
+    - std dist of inputs: 0.29
+    - dists = (FA:B) 0.50, (BNHA) 0.51, (CG: Lelouch) 0.52, (Death Note) 0.52, (CG: Lelouch R2) 0.52
+    - avg dist = 0.52
 Euclidean:
- - unaltered: 1149911.695198837
+ - unaltered: 1149911.69
     - std dist of inputs:
-    - dists = (OuranHost) 8961.677379548775, (MaidSama) 13454.206774389815, (My Teen RomCom) 15365.794548705582, (Princess Mononoke) 18975.944106107854, (Overlord) 19197.709996068443
-    - avg dist = 15191.066560964095
+    - dists = (OuranHost) 8961.68, (MaidSama) 13454.21, (My Teen RomCom) 15365.79, (Princess Mononoke) 18975.94, (Overlord) 19197.70
+    - avg dist = 15191.06
  - normalized:
-    - std dist of inputs: 20.277913908002063
-    - dists = (JoJo:diamond) 12.126737693135617, (Re:CREATORS) 12.391090152953039, (AkagaKill) 12.403364654252414, (Drifters) 12.473460788797862, (JoJo:Stardust) 12.762186996451366
-    - avg dist = 12.431368057118059
+    - std dist of inputs: 20.27
+    - dists = (JoJo:diamond) 12.12, (Re:CREATORS) 12.39, (AkagaKill) 12.40, (Drifters) 12.47, (JoJo:Stardust) 12.76
+    - avg dist = 12.43
   ESP FOR GROUPS OF SIMILAR ANIMES, IF INPUT DESCRIPTIONS HAVE OVERLAPPING WORDS, OUTPUT ANIME DESCRIPTIONS HAVE SIMILAR WORDS
 
 EXAMPLE 4, From different anime genres:
@@ -290,23 +290,23 @@ EXAMPLE 4, From different anime genres:
 THEMES: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
 Cosine:
  - unaltered:
-    - std dist of inputs: 8.944825003198709e-05
-    - dists = (anohana) 1.0174170220200729e-05, (parasyte) 1.365511339768144e-05, (elfen lied) 1.365511339768144e-05, (futdiary) 2.9363935019621756e-05, (VampKn) 3.679790838173602e-05
-    - avg dist = 2.3868724349518367e-05
+    - std dist of inputs: 8.94e-05
+    - dists = (anohana) 1.02-05, (parasyte) 1.36e-05, (elfen lied) 1.36e-05, (futdiary) 2.93e-05, (VampKn) 3.67e-05
+    - avg dist = 2.38e-05
  - normalized:
-    - std dist of inputs: 0.5418947476198352
-    - dists = (Nar:Shipp) 0.5164024347689984, (Bleach) 0.5350601782020765, (DBall Z) 0.5434340748772342, (TokyGhA) 0.5957931835361809, (Reborn!) 0.5970884948336466
-    - avg dist = 0.5575556732436272
+    - std dist of inputs: 0.54
+    - dists = (Nar:Shipp) 0.51, (Bleach) 0.53, (DBall Z) 0.54, (TokyGhA) 0.59, (Reborn!) 0.59
+    - avg dist = 0.55
    SIMILARITIES IN GENRE??? ESP ACTION, MAGIC
 Euclidean:
  - unaltered:
-    - std dist of inputs: 50161.62563486801
-    - dists = (HQ 2) 6305.243367556172, (Nisemonogatari) 10319.209978109777, (School Day) 12258.909680448818, (WolfChil) 12704.433826394961, (KnB 2) 12971.85888178294
-    - avg dist = 10911.931146858533
+    - std dist of inputs: 50161.62
+    - dists = (HQ 2) 6305.24, (Nisemonogatari) 10319.20, (School Day) 12258.90, (WolfChil) 12704.43, (KnB 2) 12971.85
+    - avg dist = 10911.93
  - normalized:
-    - std dist of inputs: 12.048349500982189
-    - dists = (JoJo:Star) 11.159525380754072, (Drifters) 11.248731517957328, (JoJo) 11.547824097220207, (Evangelion:3) 11.63044258371916, (Re:CREATORS) 11.683175678594893
-    - avg dist = 11.453939851649132
+    - std dist of inputs: 12.04
+    - dists = (JoJo:Star) 11.15, (Drifters) 11.24, (JoJo) 11.54, (Evangelion:3) 11.63, (Re:CREATORS) 11.68
+    - avg dist = 11.45
   RETURNED THEMES: friend, pain, attack, threat, battle, bloody, kill
 
 UNALTERED, EUCLIDEAN ALWAYS SKEWED TOWARD MAINSTREAM VALUES, ESP IF INCLUDE A MAINSTREAM ANIME (large scored_by count)
@@ -321,9 +321,8 @@ KEY TAKEAWAYS FROM RESULTS:
 
 ## Conclusion
 
-[summary of results/things learned].
 
-Though this approach yielded interesting results, there are some aspects that could be improved. For instance, our current dataset separates out different animes within the same series. Therefore, it could recommend a user who inputs an anime in the series, another anime within the same series. This is obviously not an ideal outcome because avid anime watchers likely would not be getting anything meaningful out of the recommendation engine. Rather, we want to be able to introduce people to new anime that they otherwise might not have known of. One way to address this issue is to compress all of the animes in a series down to one row which would completely eliminate the possibility of these types of results. We could also introduce random noise, not only to mitigate this problem but also so that the results are more likely to be new and interesting to the users. 
+Though this approach yielded interesting results, there are some aspects that could be improved. For instance, our current dataset separates out different animes within the same series. Therefore, it could recommend a user who inputs an anime in the series, another anime within the same series. This is obviously not an ideal outcome because avid anime watchers likely would not be getting anything meaningful out of the recommendation engine. Rather, we want to be able to introduce people to new anime that they otherwise might not have known of. One way to address this issue is to compress all of the animes in a series down to one row which would completely eliminate the possibility of these types of results. We could also introduce random noise or uncertainty, not only to mitigate this problem but also so that the results are more likely to be new and interesting to the users. 
 
 
 ### References
