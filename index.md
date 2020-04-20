@@ -227,6 +227,7 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
 
 **Quantitative Feature Comparisons from EXAMPLE 1 (SINGLE INPUT)**
+
 **scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
@@ -278,6 +279,7 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
  - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
  
 **Quantitative Feature Comparisons from EXAMPLE 1 (SERIES INPUT)**
+
 **scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
