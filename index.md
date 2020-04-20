@@ -235,6 +235,8 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 |Cosine|no|56588.2|364104.0584099551|
 |Cosine|yes|67307.24|383189.72831144626|
 
+From the above table for scored_by feature standard deviation, we can see that the scored_by values of Cosine normalized KNN results are on average further from the input average of the scored_by feature compared to the Cosine un-normalized KNN.
+
 **popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
 
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
@@ -242,12 +244,16 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 |Cosine|no|3.84|32.42221460665511|
 |Cosine|yes|2.92|20.449938875214272|
 
+From the above table for popularity feature standard deviation, we can see that the popularity values of Cosine un-normalized KNN results are on average further from the input average of the popularity feature compared to the Cosine normalized KNN. This is directly opposite from our feature analysis of scored_by results. However, it should be the popularity of an anime is inversely proportional to its value for the popularity feature. For example, an anime with popularity feature value 4 is mmore popular than an anime with popularity feature value 200. It is likely Cosine normalized KNN performed better than Cosine un-normalized KNN for the popularity feature as our input anime had a popularity of 2, which is a small value and is likely less skewed when normalized.
+
 **episodes** (Mean 18.50858143607706, St.Dev 44.939364036423385)
 
 |DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
 |Cosine|no|11.64|119.22164233057687|
 |Cosine|yes|2.56|19.15202339179858|
+
+From the above table for episodes feature standard deviation, we can see that the Cosine normalized KNN results had less variance than the Cosine un-normalized results. Similar to the popularity feature results, we expect the normalized KNN results to have less variance as the input episodes value is 25 and within one standard deviation to the mean (less skewed when normalized).
 
 **rank** (Mean 3453.8707530647985, St.Dev 2736.869440698026)
 
