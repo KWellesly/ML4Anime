@@ -235,7 +235,7 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 |Cosine|no|56588.2|364104.0584099551|
 |Cosine|yes|67307.24|383189.72831144626|
 
-From the above table for scored_by feature standard deviation, we can see that the scored_by values of Cosine normalized KNN results are on average further from the input average of the scored_by feature compared to the Cosine un-normalized KNN. Our input anime has a high scored value of . This value of scored_by may have been caused by possible skewing when we normalized our dataset, which may be why normalized KNN has greater variance for large quantitative features as opposed to small quantitative features.
+From the above table for scored_by feature standard deviation, we can see that the scored_by values of Cosine normalized KNN results are on average further from the input average of the scored_by feature compared to the Cosine un-normalized KNN. Our input anime has a high scored value of 1038161. This value of scored_by may have been caused by possible skewing when we normalized our dataset, which may be why normalized KNN has greater variance for large quantitative features as opposed to small quantitative features.
 
 **popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
 
