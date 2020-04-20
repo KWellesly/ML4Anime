@@ -192,7 +192,9 @@ The KNN algorithm seeks to find the k most similar anime to the current anime. H
 </p>
 
 There were two distance metrics that we considered for our modelling. The first, and preferred method, was using cosine similarity. Cosine distance is defined as:
+
 ![Cosine similarity](http://latex.codecogs.com/gif.latex?%5Ccos%5Ctheta%20%3D%20%5Cfrac%7B%5Coverrightarrow%7Ba%7D%5Ccdot%20%5Coverrightarrow%7Bb%7D%7D%7B%5Cleft%20%5C%7C%20%5Coverrightarrow%7Ba%7D%20%5Cright%20%5C%7C%5Cleft%20%5C%7C%20%5Coverrightarrow%7Bb%7D%20%5Cright%20%5C%7C%7D)
+
 and measures the angle between our input average feature vector and each of the feature vectors for anime in the dataset. We preferred cosine similarity as a distance measurement due to the way our dataset values were distributed.
 To process our data, we one-hot encoded our categorical data values, like genre, studio, and source. These columns were represented in our processed data in 1s and 0s. In comparison, our originally quantitative feature data values, such as episodes, which had values ranging from 1 to 1787, and scored_by, with minimum at 8 and maximum value 1107995, were much greater than our one-hot encoded values, and could possibly skew our KNN results towards the originally quantitative features. With this in mind, we implemented Cosine similarity as a distance measurement because it focuses on the angle between the vectors, and does not consider the respective weights or magnitudes of the vectors.
 <p align='center'>
@@ -203,7 +205,9 @@ To process our data, we one-hot encoded our categorical data values, like genre,
 </p>
 
 Our alternative distance metric was using Euclidean distance, measured by:
+
 ![Euclidean distance](http://latex.codecogs.com/gif.latex?d%5Cleft%20%28%20x%2Cy%20%5Cright%20%29%3D%5Csqrt%7B%5Cleft%20%5C%7C%20%5Coverrightarrow%7Ba%7D-%5Coverrightarrow%7Bb%7D%20%5Cright%20%5C%7C%5E%7B2%7D%7D)
+
 Euclidean distance, in contrast to Cosine distance, is similar to measuring the actual distance between the two vectors, and is thus affected by angle and magnitude of the vectors. We implemented Euclidean distance as an alternative distance measurement because we were interested in seeing how the different distance functions would perform comparatively to each other.
 
 
