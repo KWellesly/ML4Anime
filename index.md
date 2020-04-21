@@ -323,7 +323,8 @@ The results for the favorites feature was similar to that of the members feature
 and the bulk of the data for popularity is small in value. Because of this distribution, we were able to get results with small variance based on our input popularity, 2. In contrast, if we were to run KNN for an input with larger popularity feature, we would get significantly different results (see below).
 
 
-**Partial feature test, Median popularity input** (1975)
+
+ **Partial feature test, Median popularity input** (1975)
 (Mean 2988.340, St.Dev 2868.050)
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
@@ -545,8 +546,8 @@ Like for the previous feature examinations, Cosine normalized had the lowest abs
  
 **Comparative Quantitative Feature Comparisons, EXAMPLE 3 and 4**
 
-|| | |***EXAMPLE 3 (similar inputs)***|***EXAMPLE 4 (different inputs)***|
-||---|---|---|---|---|---|
+||||***EXAMPLE 3 (similar inputs)***|***EXAMPLE 4 (different inputs)***|
+|---|---|---|---|---|
 ||**DISTANCE**|**NORMALIZED?**|**AVG ABS ST.Z**|**AVG ABS ST.Z**|
 |**members**|Cosine|no|1.759|2.326|
 ||Cosine|yes|3.630|1.955|
@@ -559,8 +560,8 @@ Like for the previous feature examinations, Cosine normalized had the lowest abs
 
 
 **Comparative One-Hot Feature Comparisons, EXAMPLE 3 and 4**
-|| | |***EXAMPLE 3 (similar inputs)***||***EXAMPLE 4 (different inputs)***||
-||---|---|---|---|---|---|---|---|
+||||***EXAMPLE 3 (similar inputs)***||***EXAMPLE 4 (different inputs)***||
+|---|---|---|---|---|---|---|
 ||**DISTANCE**|**NORMALIZED?**|**AVG ABS ST.Z**|**ABS AVG Diff**|**AVG SQ ST.Dev**|**ABS AVG Diff**|
 |**genre_Comedy**|Cosine|no|1.105|0.35|1.608|0.8|
 ||Cosine|yes|1.105|0.35|0.643|0|
