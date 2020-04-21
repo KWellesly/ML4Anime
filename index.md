@@ -248,140 +248,214 @@ where fi is the feature value of the output anime, mu is the average value for t
 
 
 
-EXAMPLE 1: From a single anime title: ['Attack on Titan']
+ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **STD Input Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
-| **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
+| **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass: Lelouch R2:** 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
 
 **Quantitative Feature Comparisons from EXAMPLE 1 (SINGLE INPUT)**
 
 **scored_by** (Mean 51396.646, St.Dev 96648.632)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|56588.2|364104.058|
-|Cosine|yes|67307.24|383189.728|
+|Cosine|no|2.927|364104.058|
+|Cosine|yes|3.482|383189.728|
 
 From the above table for scored_by feature standard deviation, we can see that the scored_by values of Cosine normalized KNN results are on average further from the input average of the scored_by feature compared to the Cosine un-normalized KNN. Our input anime has a high scored value of 1038161. This value of scored_by may have been caused by possible skewing when we normalized our dataset, which may be why normalized KNN has greater variance for large quantitative features as opposed to small quantitative features.
 
 **popularity** (Mean 2988.340, St.Dev 2868.050)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|3.84|32.422|
-|Cosine|yes|2.92|20.449|
+|Cosine|no|0.006|32.422|
+|Cosine|yes|0.005|20.449|
 
 From the above table for popularity feature standard deviation, we can see that the popularity values of Cosine un-normalized KNN results are on average further from the input average of the popularity feature compared to the Cosine normalized KNN. This is directly opposite from our feature analysis of scored_by results. However, it should be the popularity of an anime is inversely proportional to its value for the popularity feature. For example, an anime with popularity feature value 4 is mmore popular than an anime with popularity feature value 200. It is likely Cosine normalized KNN performed better than Cosine un-normalized KNN for the popularity feature as our input anime had a popularity of 2, which is a small value and is likely less skewed when normalized.
 
 **episodes** (Mean 18.508, St.Dev 44.939)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|11.64|119.221|
-|Cosine|yes|2.56|19.152|
+|Cosine|no|1.295|119.221|
+|Cosine|yes|0.284|19.152|
 
 From the above table for episodes feature standard deviation, we can see that the Cosine normalized KNN results had less variance than the Cosine un-normalized results. Similar to the popularity feature results, we expect the normalized KNN results to have less variance as the input episodes value is 25 and within one standard deviation to the mean (less skewed when normalized).
 
 **rank** (Mean 3453.870, St.Dev 2736.869)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|67.520|598.198|
-|Cosine|yes|15.479|83.252|
+|Cosine|no|0.123|598.198|
+|Cosine|yes|0.028|83.252|
 
 The results and distribution of the rank feature are similar to that of the popularity feature; a low rank value refers to a high ranking anime, while a high rank value refers to a low ranking anime. Our input rank value was 116 which is a very low rank value compared to the feature distribution (range: 1 to 13837). This is likely why Cosine normalized KNN achieved a lower variance than Cosine un-normalized KNN.
 
 **members** (Mean 100507.587, St.Dev 164257.151)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|80586.4|516539.407|
-|Cosine|yes|81012.24|474466.307|
+|Cosine|no|2.453|516539.407|
+|Cosine|yes|2.466|474466.307|
 
 From the above table for members feature standard deviation, we can see that the members values of Cosine normalized KNN results are on average further from the input average of the members compared to the Cosine un-normalized KNN. This is likely because our input members value was 1500958, a high value that may have been skewed by normalization as the members feature also has a high range (52 to 1610561).
 
 **favorites** (Mean 1610.343, St.Dev 6211.037)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|5898.76|31280.509|
-|Cosine|yes|6481.640|38706.686|
+|Cosine|no|4.748|31280.509|
+|Cosine|yes|5.217|38706.686|
 
 The results for the favorites feature was similar to that of the members feature. Like members, the favorites feature has a large range (0 to 120331) and our input anime had a high favorites value of 70555 (3rd quartile).
 
 
+ If we compare Average Absolute Standard Z between our quantitative features, favorites had the largest average absolute standard Z. We can expect this, because the favorites feature has a large range of values (from 0 to 120331) and a moderately high variance (6211.037) for its range. Of the features, popularity had the lowest average absolute standard z. Although the range of feature popularity is relatively large (from 1 to 15013), the data distribution for popularity is right-skewed:
+ <p align='center'>
+  <img src="graphs/popularity distr.png"/>
+</p>
+and the bulk of the data for popularity is small in value. Because of this distribution, we were able to get results with small variance based on our input popularity, 2. In contrast, if we were to run KNN for an input with larger popularity feature, we would get significantly different results (see below).
+
+**Popularity feature test for Median popularity input** (Input: 1975, Mean 2988.340, St.Dev 2868.050)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.050|180.487|
+
+Our resulting average absolute standard Z for our popularity feature from this test is 0.050, which is much greater than our EXAMPLE 1 test results (average absolute standard Z: 0.006).
+
+
 EXAMPLE 2, From a single series of anime:
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
-INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' HAVE SYNOPSIS KEY WORD RECAP
+INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' 
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **STD Input Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
-| **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
-| **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
+| **Distances**     | - **anohana**: 9.24e-06<br>- **Madoka Magica the Movie**: 1.40e-05<br>- **Kuroko's Basketball** 1.42e-05<br>- **Vampire Knight**: 2.51e-05<br>- **Maid Sama!**: 2.68e-05 | - **Gun Samurai Recap**: 0.12<br>- **Marches Comes in Like a Lion**: 0.18<br>- **Berserk: Recollections**: 0.24<br>- **So, I Can't Play H!**: 0.26<br>- **Tsukigakirei: First Half**: 0.31 | - **Miss Kobayashi's Dragon Maid**: 10003.85<br>- **Rosario + Vampire**: 10933.50<br>- **My Teen Romantic Comedy**: 13918.15<br>- **GATE**: 16494.10<br>- **JoJo's Bizarre Adventure**: 18196.80 | - **Marches Comes in Like a Lion**: 21.31<br>- **Persona 4 the Animation**: 27.07<br>- **Fullmetal Alchemist: Premium**: 29.63<br>- **Shiki Specials**: 29.80<br>- **Robot Girls Z**: 30.68 |
+| **AVG Distances** | 1.79e-05                                                                                                                                                                   | 0.23                                                                                                                                                                              | 13909.285696612944                                                                                                                                                                              | 27.70                                                                                                                                                                                     |
  
- **Quantitative Feature Comparisons from EXAMPLE 2**
+
+**Quantitative Feature Comparisons from EXAMPLE 2**
  
  **scored_by** (Mean 51396.646, St.Dev 96648.632)
  
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|18512.48|107719.314|
-|Cosine|yes|8331.84|52104.241|
-|Euclidean|yes|2250.463|11524.224|
-|Euclidean|no|14700.0|92020.483|
+|Cosine|no|0.957|107719.314|
+|Cosine|yes|0.431|52104.241|
+|Euclidean|yes|0.116|11524.224|
+|Euclidean|no|0.760|92020.483|
  
- We can see from the above 
+ We can see from the above table for scored_by feature analysis that normalized KNN performed better than un-normalized KNN with regards to our input.
  
  **popularity** (Mean 2988.340, St.Dev 2868.050)
  
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|21.456|134.361|
-|Cosine|yes|501.247|3472.135|
-|Euclidean|yes|190.304|1020.332|
-|Euclidean|no|127.872|799.213|
+|Cosine|no|0.037|134.361|
+|Cosine|yes|0.873|3472.135|
+|Euclidean|yes|0.331|1020.332|
+|Euclidean|no|0.222|799.213|
+
+In contrast to scored_by results, our popularity feature comparison from EXAMPLE 2 shows that both un-normalized KNN results performed better compared to normalized KNN for popularity.
 
 **episodes** (Mean 18.508, St.Dev 44.939)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|1.647|9.346|
-|Cosine|yes|0.704|4.4|
-|Euclidean|yes|0.16|0.894|
-|Euclidean|no|0.368|2.332|
+|Cosine|no|0.183|9.346|
+|Cosine|yes|0.078|4.4|
+|Euclidean|yes|0.017|0.894|
+|Euclidean|no|0.040|2.332|
+
+With regards to the above table for our episodes feature, both Euclidean KNN results had lower variance from our input episodes feature.
 
 **rank** (Mean 3453.870, St.Dev 2736.869)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|no|Cosine|154.176|967.189|
-|yes|Cosine|458.527|2541.881|
-|yes|Euclidean|358.159|1908.377|
-|no|Euclidean|262.159|1368.623|
+|Cosine|no|0.281|967.189|
+|Cosine|yes|0.837|2541.881|
+|Euclidean|yes|0.654|1908.377|
+|Euclidean|no|0.478|1368.623|
+
+For the rank feature, un-normalized KNN results had lower average absoluted standard Z scores in comparison to the normalized KNN results. Cosine un-normalized KNN produced better results than Euclidean un-normalized KNN for the rank feature. However, our Euclidean normalized KNN results had lower variance than our Cosine normalized KNN results.
 
 **members** (Mean 100507.587, St.Dev 164257.151)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|31336.432|180696.498|
-|Cosine|yes|15927.472|99601.606|
-|Euclidean|yes|3645.408|18787.324|
-|Euclidean|no|24489.951|153209.480|
+|Cosine|no|0.953|180696.498|
+|Cosine|yes|0.484|99601.606|
+|Euclidean|yes|0.110|18787.324|
+|Euclidean|no|0.745|153209.480|
+
+For members, both normalized KNN had improved average absolute standard Z values, opposed to the un-normalized average absolute standard Z scores.
 
 **favorites** (Mean 1610.343, St.Dev 6211.037)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|1097.76|6265.180|
-|Cosine|yes|44.368|277.333|
-|Euclidean|yes|7.312|38.217|
-|Euclidean|no|639.008|639.008|
+|Cosine|no|0.883|6265.180|
+|Cosine|yes|0.035|277.333|
+|Euclidean|yes|0.005|38.217|
+|Euclidean|no|0.514|639.008|
+
+Like our results for the members feature comparison test, normalized KNN performed better with regards to the favorites feature as well, with Euclidean normalized KNN producing the smallest average absolute standard Z score.
+
+**One-Hot Feature Comparisons from EXAMPLE 2**
+
+For this series of comparisons, the mean value for one-hot feature represents the percentage of the data that has this feature. Some features have relatively high proportions, such as genre_Comedy, which has a mean value of 0.4486 (or 44.86% of the data). In comparison, other features represent a very small percentage of the data, such as studio_Madhouse, which has a mean of 0.0549, representing a 5.49% of the data.
  
- As with the feature comparison trends, overall Cosine un-normalized KNN results prioritized high valued quatitative feature over small value features such as one-hot encoded features. In contrast, Cosine normalized KNN produced results that were heavily impacted by one-hot encoded data values like our synopsis encoded data. Seen below is an excerpt of our input synopses:
+ **genre_Action** (Mean 0.3929, St.Dev 0.4885)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.409|0.2|
+|Cosine|yes|0.409|0.447|
+|Euclidean|yes|0.409|0.2|
+|Euclidean|no|0.655|0.4|
+ 
+ On average, Cosine un-normalized and both normalized KNN results produced an average absolute standard Z of 0.409, implying those results are more similar to our input series' genre_Action values in comparison to the Euclidean un-normalized results. Euclidean un-normalized KNN performed the "worst", with a average absolute standard Z score of 0.655. From average standard deviaton, we can see that both Cosine un-normalized and Euclidean normalized KNN results had the least average standard feature deviation, with less overall variation from the input series' genre_Action value. However, we cannot use average standard feature deviation as a determining factor for which result was stronger.
+ 
+ **genre_Comedy** (Mean 0.4486, St.Dev 0.4974)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.964|0.489|
+|Cosine|yes|0.643|0.4|
+|Euclidean|yes|0.964|0.489|
+|Euclidean|no|0.964|0.489|
+
+In contrast to the genre_Action average absolute standard Z results, Cosine normalized KNN performed the "best", with an average absolute standard Z value of 0.643. Additionally, Cosine normalized KNN results also produced the best average standard feature deviation from the input vector's genre_Comedy value.
+
+**genre_Mystery** (Mean 0.0900, St.Dev 0.2862)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|1.676|0.489|
+|Cosine|yes|0|0|
+|Euclidean|yes|1.676|0.489|
+|Euclidean|no|0|0|
+
+**studio_Madhouse** (Mean 0.0549, St.Dev 0.2280)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0|0|
+|Cosine|yes|0|0|
+|Euclidean|yes|0|0|
+|Euclidean|no|0|0|
+
+From our resulting variance measurements, we can see that for one-hot features with very low population represention (small probability), we cannot expect good measurements for how well our recommendations did relative to the input, as most possible data animes fall outside this tiny portion of our data. This is especially exemplified by our measurements from genre_Mystery and studio_Madhouse values for average absolute standard Z and average standard feature deviation; several times, the values were both 0, but this value cannot necessarily signify perfect recommendation results for this feature, given the input anime. Instead, this measurement tells us that from our anime dataset, we do not have enough values in our anime dataset to accurately measure our KNN performance with regards to the feature in question.
+
+In contrast, we found that for one-hot encoded features that are large in proportion (in regards to our anime dataset), Cosine normalized KNN on average performed better than the other KNN implementations. On the other hand, Euclidean un-normlized KNN always performed the worst for such one-hot encoded features. One additional note that should be made here, is that the average standard deviation for one-hot encoded features we were able to measure performance for (namely, genre_Action and genre_Comedy) had average feature standard deviation that approached the overall population standard deviation.
+ 
+ As with the feature comparison trends, overall Cosine un-normalized KNN results prioritized high valued quatitative features over small value features such as one-hot encoded features. In contrast, Cosine normalized KNN produced results that were heavily impacted by one-hot encoded data values like our synopsis encoded data. Seen below is an excerpt of our input synopses:
  <p align='center'>
   <img src="/ML4Anime/graphs/AoT_Series_wording_input.jpg" width="500"/>
 </p>
@@ -394,45 +468,35 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
   <img src="/ML4Anime/graphs/AoT_Eu_wording_out-1.jpg" width="500"/>
 </p>
   In contrast, our Euclidean un-normalized results were heavily based on high values quantitative features such as scored_by, and did not give results similar to our on-hot encoded features. We can conclude from these results that normalizing our data is imperative to giving equal emphasis to our one-hot features and quantitative data features, but may result in skew due to normalizing high value quantitative feature values.
-
-
- NORMALIZED WEIGHTED TOWARD SYNOPSIS WORDING, ESP SINCE MANY INPUTS EMPHASIZED SAME WORDS (ESP Recap, episode, member, team)
- - ALL RESULTS HAD SYNOPSIS KEY WORD RECAP
  
 
 EXAMPLE 3, From a relatively similar assortment of anime:
 ['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
-SHARED THEMES: survival, human, hero, villain, criminal, police, school, attack
+SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, attack
 
 |               | Cosine Unaltered                                                                                                                                                         | Cosine Normalized                                                                                                                                                              | Euclidean Unaltered                                                                                                                                                                           | Euclidean Normalized                                                                                                                                                                                           |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **STD Input Distance**  | 1.73 e-03                                                                                                                                                                | 0.29                                                                                                                                                                           | 1149911.69                                                                                                                                                                                    | 20.27                                                                                                                                                                                                          |
-| **Distances**     | -**Fullmetal Alchemist**: 7.40e-06<br> -**Future Diary**: 9.45e-06<br> -**Elfen Lied**: 9.74e-06<br> -**Parasyte**: 2.14 e-05<br> -**My Teen Romantic Comedy**: 2.59e-05 | -**Fullmetal Alchemist: Brotherhood**: 0.50<br> -**My Hero Academia**: 0.51<br> -**Code Geass: Lelouch**: 0.52<br> -**Death Note**: 0.52<br> -**Code Geass: Lelouch R2**: 0.52 | -**Ouran High School Host Club**: 8961.68<br> -**Kaichou Wa Maid-Sama**: 13454.21<br> -**My Teen Romantic Comedy**: 15365.79<br> -**Princess Mononoke**: 18975.94<br> -**Overlord**: 19197.70 | -**JoJo's Bizarre Adventures: Diamond is Unbreakable**: 12.12<br> -**Re: CREATORS**: 12.39<br> -**Akame ga Kill**: 12.40<br> -**Drifters**: 12.47<br> -**JoJo's Bizarre Adventure: Stardust Crusadors**: 12.76 |
+| **Distances**     | -**Fullmetal Alchemist**: 7.40e-06<br> -**Future Diary**: 9.45e-06<br> -**Elfen Lied**: 9.74e-06<br> -**Parasyte**: 2.14 e-05<br> -**My Teen Romantic Comedy**: 2.59e-05 | -**Fullmetal Alchemist: Brotherhood**: 0.50<br> -**My Hero Academia**: 0.51<br> -**Code Geass: Lelouch**: 0.52<br> -**Death Note**: 0.52<br> -**Code Geass: Lelouch R2**: 0.52 | -**Ouran High School Host Club**: 8961.68<br> -**Maid-Sama!**: 13454.21<br> -**My Teen Romantic Comedy**: 15365.79<br> -**Princess Mononoke**: 18975.94<br> -**Overlord**: 19197.70 | -**JoJo's Bizarre Adventures: Diamond is Unbreakable**: 12.12<br> -**Re:CREATORS**: 12.39<br> -**Akame ga Kill!**: 12.40<br> -**Drifters**: 12.47<br> -**JoJo's Bizarre Adventure: Stardust Crusaders**: 12.76 |
 | **AVG Distances** | 1.47e-05                                                                                                                                                                 | 0.52                                                                                                                                                                           | 15191.06                                                                                                                                                                                      | 12.43                                                                                                                                                                                                          |
 
   ESP FOR GROUPS OF SIMILAR ANIMES, IF INPUT DESCRIPTIONS HAVE OVERLAPPING WORDS, OUTPUT ANIME DESCRIPTIONS HAVE SIMILAR WORDS
 
 EXAMPLE 4, From different anime genres:
 ['AKIRA', 'Desert Punk', 'Naruto', 'D.N.Angel', 'Rurouni Kenshin']
-THEMES: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
+SHARED THEMES/WORDS: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
 
 |               | Cosine Unaltered                                                                                                                          | Cosine Normalized                                                                                               | Euclidean Unaltered                                                                                                                              | Euclidean Normalized                                                                                                                                                         |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **STD Input Distance**  | 8.94e-05                                                                                                                                  | 0.54                                                                                                            | 50161.62                                                                                                                                         | 12.04                                                                                                                                                                        |
-| **Distances**     | -**Anohana**: 1.02-05<br>-**Parasyte**: 1.36e-05<br>-**Elfen Lied**: 1.36e-05<br>-**Future Diary**: 2.93e-05<br>-**Vampire Knights**: 3.67e-05 | -**Naruto Shippuden**: 0.51<br>-**Bleach**: 0.53<br>-**Dragonball Z**: 0.54<br>-**Tokyo Ghoul**: 0.59<br>-**Reborn!**: 0.59 | -**HQ 2**: 6305.24<br>-**Nisemonogatari**: 10319.20<br>-**School Day**: 12258.90<br>-**Wolf Children**: 12704.43<br>-**Kuroko no Basket 2**: 12971.85 | -**JoJo's Bizzare Adventure: Stardust Crusaders**: 11.15<br>-**Drifters**: 11.24<br>-**Jojo's Bizarre Adventure**: 11.54<br>-**Evangelion 3.0**: 11.63<br>-**Re:CREATORS**: 11.68 |
+| **Distances**     | -**anohana**: 1.02-05<br>-**Parasyte**: 1.36e-05<br>-**Elfen Lied**: 1.36e-05<br>-**Future Diary**: 2.93e-05<br>-**Vampire Knight**: 3.67e-05 | -**Naruto: Shippuden**: 0.51<br>-**Bleach**: 0.53<br>-**Dragonball Z**: 0.54<br>-**Tokyo Ghoul √A**: 0.59<br>-**Reborn!**: 0.59 | -**Haikyu! 2**: 6305.24<br>-**Nisemonogatari**: 10319.20<br>-**School Days**: 12258.90<br>-**Wolf Children**: 12704.43<br>-**Kuroko's Basketball 2**: 12971.85 | -**JoJo's Bizzare Adventure: Stardust Crusaders**: 11.15<br>-**Drifters**: 11.24<br>-**Jojo's Bizarre Adventure**: 11.54<br>-**Evangelion 3.0**: 11.63<br>-**Re:CREATORS**: 11.68 |
 | **AVG Distances** | 2.38e-05                                                                                                                                  | 0.55                                                                                                            | 10911.93                                                                                                                                         | 11.45                                                                                                                                                                        |
 
 From our results, we can see for our dataset that on average, Euclidean un-normalized KNN preformed the weakest (highest average output distance). This is likely due to the range of values we have in our dataset. We processed our categorical data into one-hot encoding, as well as retained quantitative values. In comparison, the range and variation of the quantitative values are very high. For example, quatitative feature scored_by has a range from 8 to 1107955, mean of 51396.6469352014, and a standard deviation of 96648.63221428858. Without normalization, using Euclidean distance, which accounts for weight of vectors, as well as the angle between them, will be skewed toward higher values, such as scored_by. In contrast, Cosine un-normalized KNN did a better job for considering quantiative data features.
 
+However, to properly take in our NLP one-hot encoded synopsis data, we should use normalized KNN for better results. This accuracy is improved when a set input anime have closely overlapping or related words. For instance, from our EXAMPLE 3 Cosine normalized KNN test, the input anime synopses shared words like "human", "hero", "villain", "criminal", "fight", and "school". In comparison, the corresponding anime recommendations featured words also featured related words, such as "human", "killer", "hero", "school", "criminal", "vigilante". However, this also has its own downfalls, as quantitative values and one-hot encodes data are normalized to even their weights, more recommendations become heavily dependent on one-hot data. For example, in EXAMPLE 2, specifically the Cosine normalized KNN test, the input anime series (Attack on Titan) had many unrelated but repeating words, such as "recap", "rewrite", "episode", "humanity" and especially contained the phrase "recap of episodes". Likewise, the synopses of the output animes contained this phrase "recap of episode" or a similar variant, but the recommendations were more dependent on this particular synopsis wording, rather than other features.
 
-
-UNALTERED, EUCLIDEAN ALWAYS SKEWED TOWARD MAINSTREAM VALUES, ESP IF INCLUDE A MAINSTREAM ANIME (large scored_by count)
-
-KEY TAKEAWAYS FROM RESULTS:
- - UNALTERED DATA GETS SKEWED TOWARD VERY LARGE DATA FEATURES SUCH AS scored_by
- - NORMALIZED DATA INCLUDES MORE OVERALL INFORMATION (ESP FOR SYNOPSIS ANALYSIS IF A WORD IS USED OFTEN)
-    - POSITIVES: FOR A CLOSE SET OF INPUT ANIME, A RELATED SET OF WORDS SUCH AS (survival, human, hero, villain, criminal, police, school, attack) RESULT IN A RECOMMENDATIONS SET OF CLOSELY ALIGNED THEMES (school, crime, attack, hero, human, fight, revolution)
-    - NEGATIVES: FOR A SET OF INPUT ANIME WITH VERY MINIMAL VARIATION IN INPUT (EXACTLY THE THE SAME FEW WORDS ESP), LIKE IN EXAMPLE 2: AoT SERIES HAD MANY SYNOPSES THAT WERE JUST "RECAP OF EPISODES some_range" AND AS EXPECTED, WE WERE RECOMMENDED ANIME WITH SYNOPSES THAT (ESP IN NORMALIZED COSINE) ALL HAD THE WORD 'RECAP' OR 'EPISODE' IN THE DESCRIPTIONS
+Additionally, we found that for very different input animes, like in our EXAMPLE 4 test, the KNN recommendations would have higher variance
  - HIGH VARIANCE INPUT DATA (TO MAKE AVERAGE) RESULTS IN HIGHER VARIANCE / MORE SPREAD OUT RECOMMENDATIONS
 
 
