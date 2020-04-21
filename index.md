@@ -415,7 +415,7 @@ In contrast to the genre_Action, average absolute standard Z results, Cosine nor
 **studio_Madhouse** (Mean 0.0549, St.Dev 0.2280)
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
-|---|---|---|---|
+|---|---|---|---|---|
 |Cosine|no|0|0|0|
 |Cosine|yes|0|0|0|
 |Euclidean|yes|0|0|0|
