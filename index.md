@@ -412,46 +412,51 @@ Like our results for the members feature comparison test, normalized KNN perform
 **One-Hot Feature Comparisons from EXAMPLE 2**
 
 For this series of comparisons, the mean value for one-hot feature represents the percentage of the data that has this feature. Some features have relatively high proportions, such as genre_Comedy, which has a mean value of 0.4486 (or 44.86% of the data). In comparison, other features represent a very small percentage of the data, such as studio_Madhouse, which has a mean of 0.0549, representing a 5.49% of the data.
+Additionally, we use Absolute average difference as a measure test how similar our results were to the input. It is calculated by:
+ <p align='center'>
+  <img src="http://latex.codecogs.com/gif.latex?%5Cleft%20%7C%20%5Cfrac%7B%5Csum%20x_%7Bi%7D%7D%7Bn%7D-%5Cmu%20%5Cright%20%7C%20%3D%5Cleft%20%7C%20%5Cbar%7Bx%7D-%5Cmu%20%5Cright%20%7C"/>
+</p>
+ where x-bar is the average feature value from the anime recommendations and mu is the average feature value from the inputs.
  
  **genre_Action** (Mean 0.3929, St.Dev 0.4885)
  
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.409|0.2|
-|Cosine|yes|0.409|0.447|
-|Euclidean|yes|0.409|0.2|
-|Euclidean|no|0.655|0.4|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|0.409|0.2|0|
+|Cosine|yes|0.409|0.447|0.2|
+|Euclidean|yes|0.409|0.2|0.2|
+|Euclidean|no|0.655|0.4|0.2|
  
  On average, Cosine un-normalized and both normalized KNN results produced an average absolute standard Z of 0.409, implying those results are more similar to our input series' genre_Action values in comparison to the Euclidean un-normalized results. Euclidean un-normalized KNN performed the "worst", with a average absolute standard Z score of 0.655. From average standard deviaton, we can see that both Cosine un-normalized and Euclidean normalized KNN results had the least average standard feature deviation, with less overall variation from the input series' genre_Action value. However, we cannot use average standard feature deviation as a determining factor for which result was stronger.
  
  **genre_Comedy** (Mean 0.4486, St.Dev 0.4974)
  
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.964|0.489|
-|Cosine|yes|0.643|0.4|
-|Euclidean|yes|0.964|0.489|
-|Euclidean|no|0.964|0.489|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|0.964|0.489|0|
+|Cosine|yes|0.643|0.4|0|
+|Euclidean|yes|0.964|0.489|0|
+|Euclidean|no|0.964|0.489|0|
 
 In contrast to the genre_Action average absolute standard Z results, Cosine normalized KNN performed the "best", with an average absolute standard Z value of 0.643. Additionally, Cosine normalized KNN results also produced the best average standard feature deviation from the input vector's genre_Comedy value.
 
 **genre_Mystery** (Mean 0.0900, St.Dev 0.2862)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|1.676|0.489|
-|Cosine|yes|0|0|
-|Euclidean|yes|1.676|0.489|
-|Euclidean|no|0|0|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|1.676|0.489|0|
+|Cosine|yes|0|0|0|
+|Euclidean|yes|1.676|0.489|0|
+|Euclidean|no|0|0|0|
 
 **studio_Madhouse** (Mean 0.0549, St.Dev 0.2280)
 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
 |---|---|---|---|
-|Cosine|no|0|0|
-|Cosine|yes|0|0|
-|Euclidean|yes|0|0|
-|Euclidean|no|0|0|
+|Cosine|no|0|0|0|
+|Cosine|yes|0|0|0|
+|Euclidean|yes|0|0|0|
+|Euclidean|no|0|0|0|
 
 From our resulting variance measurements, we can see that for one-hot features with very low population represention (small probability), we cannot expect good measurements for how well our recommendations did relative to the input, as most possible data animes fall outside this tiny portion of our data. This is especially exemplified by our measurements from genre_Mystery and studio_Madhouse values for average absolute standard Z and average standard feature deviation; several times, the values were both 0, but this value cannot necessarily signify perfect recommendation results for this feature, given the input anime. Instead, this measurement tells us that from our anime dataset, we do not have enough values in our anime dataset to accurately measure our KNN performance with regards to the feature in question.
 
@@ -540,6 +545,26 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 |Euclidean|no|0.597|5003.026|
 
 
+**One-Hot Feature Comparisons from EXAMPLE 3**
+
+ **genre_Comedy** (Mean 0.4486, St.Dev 0.4974)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|1.045|0.529|0.199|
+|Cosine|yes|0.964|0.489|0|
+|Euclidean|yes|0.964|0.489|0|
+|Euclidean|no|1.45|0.529|0.199|
+
+
+**genre_Action** (Mean 0.3929, St.Dev 0.4885)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|0.655|0.4|0|
+|Cosine|yes|0.655|0.4|0|
+|Euclidean|yes|0|0|0|
+|Euclidean|no|0.982|0.489|0|
 
 
   ESP FOR GROUPS OF SIMILAR ANIMES, IF INPUT DESCRIPTIONS HAVE OVERLAPPING WORDS, OUTPUT ANIME DESCRIPTIONS HAVE SIMILAR WORDS
