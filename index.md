@@ -547,6 +547,7 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 
 **One-Hot Feature Comparisons from EXAMPLE 3**
 
+
  **genre_Comedy** (Mean 0.4486, St.Dev 0.4974)
  
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
@@ -578,6 +579,39 @@ SHARED THEMES/WORDS: violence, attack, threat, friend, boy, fight, war, Japan, p
 | **STD Input Distance**  | 8.94e-05                                                                                                                                  | 0.54                                                                                                            | 50161.62                                                                                                                                         | 12.04                                                                                                                                                                        |
 | **Distances**     | -**anohana**: 1.02-05<br>-**Parasyte**: 1.36e-05<br>-**Elfen Lied**: 1.36e-05<br>-**Future Diary**: 2.93e-05<br>-**Vampire Knight**: 3.67e-05 | -**Naruto: Shippuden**: 0.51<br>-**Bleach**: 0.53<br>-**Dragonball Z**: 0.54<br>-**Tokyo Ghoul √A**: 0.59<br>-**Reborn!**: 0.59 | -**Haikyu! 2**: 6305.24<br>-**Nisemonogatari**: 10319.20<br>-**School Days**: 12258.90<br>-**Wolf Children**: 12704.43<br>-**Kuroko's Basketball 2**: 12971.85 | -**JoJo's Bizzare Adventure: Stardust Crusaders**: 11.15<br>-**Drifters**: 11.24<br>-**Jojo's Bizarre Adventure**: 11.54<br>-**Evangelion 3.0**: 11.63<br>-**Re:CREATORS**: 11.68 |
 | **AVG Distances** | 2.38e-05                                                                                                                                  | 0.55                                                                                                            | 10911.93                                                                                                                                         | 11.45                                                                                                                                                                        |
+
+
+**Quantitative Feature Comparisons from EXAMPLE 4**
+ 
+ 
+ **popularity** (Mean 2988.340, St.Dev 2868.050)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.015|58.669|
+|Cosine|yes|0.221|638.734|
+|Euclidean|yes|0.30|87.315|
+|Euclidean|no|0.191|905.441|
+
+**episodes** (Mean 18.508, St.Dev 44.939)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.135|6.280|
+|Cosine|yes|2.971|163.409|
+|Euclidean|yes|0.181|9.173|
+|Euclidean|no|0.174|8.749|
+
+**favorites** (Mean 1610.343, St.Dev 6211.037)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.763|5917.963|
+|Cosine|yes|2.348|15738.445|
+|Euclidean|yes|0.352|2272.966|
+|Euclidean|no|0.257|2129.000|
+
+
 
 From our results, we can see for our dataset that on average, Euclidean un-normalized KNN preformed the weakest (highest average output distance). This is likely due to the range of values we have in our dataset. We processed our categorical data into one-hot encoding, as well as retained quantitative values. In comparison, the range and variation of the quantitative values are very high. For example, quatitative feature scored_by has a range from 8 to 1107955, mean of 51396.6469352014, and a standard deviation of 96648.63221428858. Without normalization, using Euclidean distance, which accounts for weight of vectors, as well as the angle between them, will be skewed toward higher values, such as scored_by. In contrast, Cosine un-normalized KNN did a better job for considering quantiative data features.
 
