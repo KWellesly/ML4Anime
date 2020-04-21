@@ -217,6 +217,35 @@ For our KNN implementation, we compare the distance values of each feature vecto
 which then ensures minimum angle, 0 degrees, is represented as 1-Cos(0) and thus a minimum Cosine distance value of 0 as well. In contrast, now for an angle of 90 degrees, Cosine distance = 1-Cos(90) = 1-Cos(-90) = 1, and for an angle of 180 degrees, Cosine distance = 1-Cos(180) = 2, the maximum Cosine distance value.
 
 ### Results 
+Because we are using an unsupervised learning model, there is no sure-fire way to measure the "accuracy" of our results. However, we came up with several comparitive statistical measurements to analyze our recommendations relative to our inputs.
+
+The first measurement we use is the standardized average distance between the average of the input feature vectors and the feature vector for the anime in question, which we refer to as STD Distance. STD Distance takes its derivation from standard deviation and is calculated by:
+<p align='center'>
+  <img src="http://latex.codecogs.com/gif.latex?%5Csqrt%7B%20%5Cfrac%7B%5Csum%20%5Cleft%20%28%20x_%7Bi%7D%20-%20u%20%5Cright%20%29%5E%7B2%7D%7D%7Bn%7D%20%7D"/>
+</p>
+where for all xi in the set of result anime feature vectors, n is the number of recommended animes, and u is the average feature vector generated from the input animes. It essentially represents the average variance of the set of recommended anime features from the input average features.
+
+Another metric that we use to compare our overall recommendations to our input animes is average distance:
+<p align='center'>
+  <img src="http://latex.codecogs.com/gif.latex?%5Cbar%7Bd%7D%3D%5Cfrac%7B%5Csum%20d_%7Bi%7D%7D%7Bn%7D"/>
+</p>
+and is simply the mean value of all the distances of our output anime.
+
+For our feature comparisons, we defined two major measurements. The first is Average Absolute Standard Z-score of the feature of the output anime. Standard Z-score of anime i refers to the  standardized difference of the value of the anime feature from the mean input feature value and is defined by:
+<p align='center'>
+  <img src="http://latex.codecogs.com/gif.latex?z_%7Bi%2Cf%7D%20%3D%20%5Cfrac%7Bx_%7Bf%7D-%5Cmu%20%7D%7B%5Csigma%20%7D"/>
+</p>
+where xf is the value of feature f in anime feature vector x, mu is the average value for that feature from our input animes, and sigma is the standard deviation of that feature from all our of data values.
+From Standard Z-score, we define Average Absolute Standard Z as:
+<p align='center'>
+  <img src="http://latex.codecogs.com/gif.latex?Z_%7Bf%7D%20%3D%20%5Cfrac%7B%20%5Csum%20%5Cleft%20%7C%20z_%7Bi%2Cf%7D%20%5Cright%20%7C%7D%7B%5Csigma%20%7D"/>
+</p>
+Our second primary metric for feature comparisons is Average Standard Feature Deviation, derived similarly to standard deviation:
+<p align='center'>
+  <img src="http://latex.codecogs.com/gif.latex?s%20%3D%20%5Csqrt%7B%5Cfrac%7B%5Csum%20%5Cleft%20%28%20f_%7Bi%7D%20-%20%5Cmu%20%5Cright%20%29%5E%7B2%7D%7D%7Bn%7D%7D"/>
+</p>
+where fi is the feature value of the output anime, mu is the average value for that feature from our input animes, and n is the number of output anime.
+
 
 EXAMPLE 1: From a single anime title: ['Attack on Titan']
 
@@ -228,57 +257,57 @@ EXAMPLE 1: From a single anime title: ['Attack on Titan']
 
 **Quantitative Feature Comparisons from EXAMPLE 1 (SINGLE INPUT)**
 
-**scored_by** (Mean 51396.6469352014, St.Dev 96648.63221428858)
+**scored_by** (Mean 51396.646, St.Dev 96648.632)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
-|Cosine|no|56588.2|364104.0584099551|
-|Cosine|yes|67307.24|383189.72831144626|
+|Cosine|no|56588.2|364104.058|
+|Cosine|yes|67307.24|383189.728|
 
 From the above table for scored_by feature standard deviation, we can see that the scored_by values of Cosine normalized KNN results are on average further from the input average of the scored_by feature compared to the Cosine un-normalized KNN. Our input anime has a high scored value of 1038161. This value of scored_by may have been caused by possible skewing when we normalized our dataset, which may be why normalized KNN has greater variance for large quantitative features as opposed to small quantitative features.
 
-**popularity** (Mean 2988.3401050788093, St.Dev 2868.050739389625)
+**popularity** (Mean 2988.340, St.Dev 2868.050)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
-|Cosine|no|3.84|32.42221460665511|
-|Cosine|yes|2.92|20.449938875214272|
+|Cosine|no|3.84|32.422|
+|Cosine|yes|2.92|20.449|
 
 From the above table for popularity feature standard deviation, we can see that the popularity values of Cosine un-normalized KNN results are on average further from the input average of the popularity feature compared to the Cosine normalized KNN. This is directly opposite from our feature analysis of scored_by results. However, it should be the popularity of an anime is inversely proportional to its value for the popularity feature. For example, an anime with popularity feature value 4 is mmore popular than an anime with popularity feature value 200. It is likely Cosine normalized KNN performed better than Cosine un-normalized KNN for the popularity feature as our input anime had a popularity of 2, which is a small value and is likely less skewed when normalized.
 
-**episodes** (Mean 18.50858143607706, St.Dev 44.939364036423385)
+**episodes** (Mean 18.508, St.Dev 44.939)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
-|Cosine|no|11.64|119.22164233057687|
-|Cosine|yes|2.56|19.15202339179858|
+|Cosine|no|11.64|119.221|
+|Cosine|yes|2.56|19.152|
 
 From the above table for episodes feature standard deviation, we can see that the Cosine normalized KNN results had less variance than the Cosine un-normalized results. Similar to the popularity feature results, we expect the normalized KNN results to have less variance as the input episodes value is 25 and within one standard deviation to the mean (less skewed when normalized).
 
-**rank** (Mean 3453.8707530647985, St.Dev 2736.869440698026)
+**rank** (Mean 3453.870, St.Dev 2736.869)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
-|Cosine|no|67.52000000000001|598.1989635564408|
-|Cosine|yes|15.479999999999999|83.25262758616091|
+|Cosine|no|67.520|598.198|
+|Cosine|yes|15.479|83.252|
 
 The results and distribution of the rank feature are similar to that of the popularity feature; a low rank value refers to a high ranking anime, while a high rank value refers to a low ranking anime. Our input rank value was 116 which is a very low rank value compared to the feature distribution (range: 1 to 13837). This is likely why Cosine normalized KNN achieved a lower variance than Cosine un-normalized KNN.
 
-**members** (Mean 100507.58774080561, St.Dev 164257.15112195478)
+**members** (Mean 100507.587, St.Dev 164257.151)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
-|Cosine|no|80586.4|516539.4072722816|
-|Cosine|yes|81012.24|474466.3075389021|
+|Cosine|no|80586.4|516539.407|
+|Cosine|yes|81012.24|474466.307|
 
 From the above table for members feature standard deviation, we can see that the members values of Cosine normalized KNN results are on average further from the input average of the members compared to the Cosine un-normalized KNN. This is likely because our input members value was 1500958, a high value that may have been skewed by normalization as the members feature also has a high range (52 to 1610561).
 
-**favorites** (Mean 1610.3432574430824, St.Dev 6211.037964762604)
+**favorites** (Mean 1610.343, St.Dev 6211.037)
 
-|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
 |---|---|---|---|
-|Cosine|no|5898.76|31280.509391632353|
-|Cosine|yes|6481.640000000001|38706.68688224297|
+|Cosine|no|5898.76|31280.509|
+|Cosine|yes|6481.640|38706.686|
 
 The results for the favorites feature was similar to that of the members feature. Like members, the favorites feature has a large range (0 to 120331) and our input anime had a high favorites value of 70555 (3rd quartile).
 
@@ -292,6 +321,64 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 | **STD Input Distance**  | 1.11e-16                                                                                                                                                                   | 2.22e-16                                                                                                                                                                          | 0                                                                                                                                                                                      | 0                                                                                                                                                                                         |
 | **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass**: Lelouch R2: 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
+ 
+ **Quantitative Feature Comparisons from EXAMPLE 2**
+ 
+ **scored_by** (Mean 51396.646, St.Dev 96648.632)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|18512.48|107719.314|
+|Cosine|yes|8331.84|52104.241|
+|Euclidean|yes|2250.463|11524.224|
+|Euclidean|no|14700.0|92020.483|
+ 
+ We can see from the above 
+ 
+ **popularity** (Mean 2988.340, St.Dev 2868.050)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|21.456|134.361|
+|Cosine|yes|501.247|3472.135|
+|Euclidean|yes|190.304|1020.332|
+|Euclidean|no|127.872|799.213|
+
+**episodes** (Mean 18.508, St.Dev 44.939)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|1.647|9.346|
+|Cosine|yes|0.704|4.4|
+|Euclidean|yes|0.16|0.894|
+|Euclidean|no|0.368|2.332|
+
+**rank** (Mean 3453.870, St.Dev 2736.869)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|no|Cosine|154.176|967.189|
+|yes|Cosine|458.527|2541.881|
+|yes|Euclidean|358.159|1908.377|
+|no|Euclidean|262.159|1368.623|
+
+**members** (Mean 100507.587, St.Dev 164257.151)
+
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|31336.432|180696.498|
+|Cosine|yes|15927.472|99601.606|
+|Euclidean|yes|3645.408|18787.324|
+|Euclidean|no|24489.951|153209.480|
+
+**favorites** (Mean 1610.343, St.Dev 6211.037)
+
+|DISTANCE|NORMALIZED?|AVG ST.Z|AVG SQ ST.Z|
+|---|---|---|---|
+|Cosine|no|1097.76|6265.180|
+|Cosine|yes|44.368|277.333|
+|Euclidean|yes|7.312|38.217|
+|Euclidean|no|639.008|639.008|
  
  As with the feature comparison trends, overall Cosine un-normalized KNN results prioritized high valued quatitative feature over small value features such as one-hot encoded features. In contrast, Cosine normalized KNN produced results that were heavily impacted by one-hot encoded data values like our synopsis encoded data. Seen below is an excerpt of our input synopses:
  <p align='center'>
