@@ -250,6 +250,8 @@ where fi is the feature value of the output anime, mu is the average value for t
 
  ***EXAMPLE 1: From a single anime***
  ['Attack on Titan']
+ 
+ We first chose a single anime to test our KNN model with. This represents an input set with fully minimized variability. Recommendations are as follows:
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -333,7 +335,8 @@ Our resulting average absolute standard Z for our popularity feature from this t
 
 ***EXAMPLE 2, From a single series of anime:***
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
-INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' 
+
+For this KNN test, we selected a series of anime to represent a very closely associated anime input set. We ran our KNN model and received the following results:
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -348,34 +351,34 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|0.281|967.189|
-|Cosine|yes|0.837|2541.881|
-|Euclidean|yes|0.654|1908.377|
-|Euclidean|no|0.478|1368.623|
+|Cosine|no|0.431|1185.555|
+|Cosine|yes|1.978|5980.809|
+|Euclidean|yes|0.701|2538.916|
+|Euclidean|no|0.464|1382.384|
 
-For the rank feature, un-normalized KNN results had lower average absoluted standard Z scores in comparison to the normalized KNN results. Cosine un-normalized KNN produced better results than Euclidean un-normalized KNN for the rank feature. However, our Euclidean normalized KNN results had lower variance than our Cosine normalized KNN results.
+For the rank feature, un-normalized KNN results had lower average absoluted standard Z scores in comparison to the normalized KNN results. Cosine un-normalized KNN produced better results than Euclidean un-normalized KNN for the rank feature. However, our Euclidean normalized KNN results had lower variance than our Cosine normalized KNN results, likely because Cosine normalized KNN is the least affected by large magnitude quantitative values in comparison to the other tests.
 
 **members** (Mean 100507.587, St.Dev 164257.151)
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|0.953|180696.498|
-|Cosine|yes|0.484|99601.606|
-|Euclidean|yes|0.110|18787.324|
-|Euclidean|no|0.745|153209.480|
+|Cosine|no|1.034|192446.065|
+|Cosine|yes|2.209|376356.675|
+|Euclidean|yes|2.382|391837.882|
+|Euclidean|no|0.500|172492|
 
-For members, both normalized KNN had improved average absolute standard Z values, opposed to the un-normalized average absolute standard Z scores.
+For members, both un-normalized KNN had improved average absolute standard Z values (lower), opposed to the normalized average absolute standard Z scores.
 
 **favorites** (Mean 1610.343, St.Dev 6211.037)
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|0.883|6265.180|
-|Cosine|yes|0.035|277.333|
-|Euclidean|yes|0.005|38.217|
-|Euclidean|no|0.514|639.008|
+|Cosine|no|0.935|6467.425|
+|Cosine|yes|1.900|11806.143|
+|Euclidean|yes|1.916|11906.547|
+|Euclidean|no|1.08|7654.534|
 
-Like our results for the members feature comparison test, normalized KNN performed better with regards to the favorites feature as well, with Euclidean normalized KNN producing the smallest average absolute standard Z score.
+Like our results for the members feature comparison test, un-normalized KNN performed better with regards to the favorites feature as well. However, unlike for members, Cosine un-normalized KNN produced the smallest average absolute standard Z score.
 
 **One-Hot Feature Comparisons from EXAMPLE 2**
 
@@ -390,32 +393,24 @@ Additionally, we use Absolute average difference as a measure test how similar o
  
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
 |---|---|---|---|---|
-|Cosine|no|0.409|0.2|0|
-|Cosine|yes|0.409|0.447|0.2|
-|Euclidean|yes|0.409|0.2|0.2|
-|Euclidean|no|0.655|0.4|0.2|
+|Cosine|no|1.754|0.857|0.857|
+|Cosine|yes|1.462|0.769|0.657|
+|Euclidean|yes|1.754|0.857|0.857|
+|Euclidean|no|1.462|0.769|0.657|
  
- On average, Cosine un-normalized and both normalized KNN results produced an average absolute standard Z of 0.409, implying those results are more similar to our input series' genre_Action values in comparison to the Euclidean un-normalized results. Euclidean un-normalized KNN performed the "worst", with a average absolute standard Z score of 0.655. From average standard deviaton, we can see that both Cosine un-normalized and Euclidean normalized KNN results had the least average standard feature deviation, with less overall variation from the input series' genre_Action value. However, we cannot use average standard feature deviation as a determining factor for which result was stronger.
+ On average, the tests were about evenly distributed, with Cosine normalized and Euclidean un-normalized performing slightly better than the other two tests. However, as our inputs formed a concentrated set with with moderate variance, so we expect some randomness in our test results.
  
  **genre_Comedy** (Mean 0.4486, St.Dev 0.4974)
  
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
 |---|---|---|---|---|
-|Cosine|no|0.964|0.489|0|
-|Cosine|yes|0.643|0.4|0|
-|Euclidean|yes|0.964|0.489|0|
-|Euclidean|no|0.964|0.489|0|
+|Cosine|no|0.861|0.553|0.257|
+|Cosine|yes|0.574|0.404|0.057|
+|Euclidean|yes|0.861|0.553|0.257|
+|Euclidean|no|1.148|0.670|0.457
 
-In contrast to the genre_Action average absolute standard Z results, Cosine normalized KNN performed the "best", with an average absolute standard Z value of 0.643. Additionally, Cosine normalized KNN results also produced the best average standard feature deviation from the input vector's genre_Comedy value.
+In contrast to the genre_Action, average absolute standard Z results, Cosine normalized KNN performed the best, with smallest absolute average distance of 0.057 and an average absolute standard Z score of 0.574. Both Cosine un-normalized and Euclidean normalized performed better than Euclidean un-normalized, which we expected since both better performing tests have some degree of balancing one-hot features with high value quantitative features (Cosine distance, or normalization).
 
-**genre_Mystery** (Mean 0.0900, St.Dev 0.2862)
-
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
-|---|---|---|---|---|
-|Cosine|no|1.676|0.489|0|
-|Cosine|yes|0|0|0|
-|Euclidean|yes|1.676|0.489|0|
-|Euclidean|no|0|0|0|
 
 **studio_Madhouse** (Mean 0.0549, St.Dev 0.2280)
 
@@ -426,7 +421,9 @@ In contrast to the genre_Action average absolute standard Z results, Cosine norm
 |Euclidean|yes|0|0|0|
 |Euclidean|no|0|0|0|
 
-From our resulting variance measurements, we can see that for one-hot features with very low population represention (small probability), we cannot expect good measurements for how well our recommendations did relative to the input, as most possible data animes fall outside this tiny portion of our data. This is especially exemplified by our measurements from genre_Mystery and studio_Madhouse values for average absolute standard Z and average standard feature deviation; several times, the values were both 0, but this value cannot necessarily signify perfect recommendation results for this feature, given the input anime. Instead, this measurement tells us that from our anime dataset, we do not have enough values in our anime dataset to accurately measure our KNN performance with regards to the feature in question.
+From our resulting variance measurements, we can see that for one-hot features with very low population represention (small probability), we cannot expect good measurements for how well our recommendations did relative to the input, as most possible data animes fall outside this tiny portion of our data. This is especially exemplified by our measurements from studio_Madhouse values for average absolute standard Z and average standard feature deviation; several times, the values were both 0. However, this value cannot necessarily signify perfect recommendation results for this feature, given the input anime. Instead, this measurement tells us that from our anime dataset, we do not have enough values in our anime dataset to accurately measure our KNN performance with regards to the feature in question.
+However, with regards to our results, we can say with relative confidence that because we had a set of input anime with a mean studio_Madhouse feature value of 0 (meaning, none of the animes were created by studio_Madhouse) we would expect for our recommendations to return non-studio_Madhouse's animes.
+
 
 In contrast, we found that for one-hot encoded features that are large in proportion (in regards to our anime dataset), Cosine normalized KNN on average performed better than the other KNN implementations. On the other hand, Euclidean un-normlized KNN always performed the worst for such one-hot encoded features. One additional note that should be made here, is that the average standard deviation for one-hot encoded features we were able to measure performance for (namely, genre_Action and genre_Comedy) had average feature standard deviation that approached the overall population standard deviation.
  
@@ -449,6 +446,8 @@ In contrast, we found that for one-hot encoded features that are large in propor
 ['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
 SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, attack
 
+Using our personal anime knowledge and experiences, we selected a set of anime that were relatively closely associated for our KNN model testing. Below are our KNN model recommendations:
+
 |               | Cosine Unaltered                                                                                                                                                         | Cosine Normalized                                                                                                                                                              | Euclidean Unaltered                                                                                                                                                                           | Euclidean Normalized                                                                                                                                                                                           |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **STD Input Distance**  | 1.73 e-03                                                                                                                                                                | 0.29                                                                                                                                                                           | 1149911.69                                                                                                                                                                                    | 20.27                                                                                                                                                                                                          |
@@ -463,21 +462,21 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|1.032|218850.174|
-|Cosine|yes|1.498|272464.600|
-|Euclidean|yes|1.196|246220.459|
-|Euclidean|no|0.046|8979.482|
+|Cosine|no|1.759|310117.245|
+|Cosine|yes|3.630|655653.098|
+|Euclidean|yes|1.910|314383.452|
+|Euclidean|no|0.044|9401.446|
 
 **favorites** (Mean 1610.343, St.Dev 6211.037)
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
-|Cosine|no|0.656|4930.025|
-|Cosine|yes|4.630|32868.400|
-|Euclidean|yes|1.386|9974.895|
-|Euclidean|no|0.597|5003.026|
+|Cosine|no|0.873|5479.696|
+|Cosine|yes|9.011|64907.739|
+|Euclidean|yes|1.456|10471.048|
+|Euclidean|no|0.065|5036.444|
 
-One trend consistently demonstrated from the quantitative feature comparisons is that for large quantitative values, normalizing our data before KNN modeling results in larger average absolute standard Z scores compared to un-normalized KNN.
+One trend consistently demonstrated from the quantitative feature comparisons is that for large quantitative values (such as members or favorites), normalizing our data before KNN modeling results in larger average absolute standard Z scores compared to un-normalized KNN.
 
 **One-Hot Feature Comparisons from EXAMPLE 3**
 
@@ -486,17 +485,19 @@ One trend consistently demonstrated from the quantitative feature comparisons is
  
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
 |---|---|---|---|---|
-|Cosine|no|1.045|0.529|0.199|
-|Cosine|yes|0.964|0.489|0|
-|Euclidean|yes|0.964|0.489|0|
-|Euclidean|no|1.45|0.529|0.199|
+|Cosine|no|1.105|0.602|0.35|
+|Cosine|yes|1.105|602|0.35|
+|Euclidean|yes|1.105|0.602|0.35|
+|Euclidean|no|0.904|0.512|0.150|
 
-From the above feature comparison, we can tell that both the un-normalized KNN results gave a set of anime that had an absolute mean difference value from the input average of 0.199, which is approximately 1 out of the recommended set of 5.
+From the above feature comparison, we can see that of the KNN tests, Euclidean un-normalized had the worst performance. This most likely because of how the Euclidean formula is defined to consider weights and magnitudes of the vectors in comparison and, because the test was also not normalized, the final outcome was biased towards largest quantitative features, such as members, or favorites (which we can see from the previous favorites and members feature comparison tables that Euclidean un-normalized had the highest accuracy for, out of all our KNN tests).
 
   
 ***EXAMPLE 4, From different anime genres:***
 ['AKIRA', 'Desert Punk', 'Naruto', 'D.N.Angel', 'Rurouni Kenshin']
-SHARED THEMES/WORDS: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
+
+We selected our animes in this test by choosing 5 random genres (Horror, Ecchi, Comedy, Magic, and Romance) and then choosing an anime from the top of the list of anime in the corresponding genre. We then put this set of anime into our KNN model. The results were as follows:
+
 
 |               | Cosine Unaltered                                                                                                                          | Cosine Normalized                                                                                               | Euclidean Unaltered                                                                                                                              | Euclidean Normalized                                                                                                                                                         |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -506,6 +507,65 @@ SHARED THEMES/WORDS: violence, attack, threat, friend, boy, fight, war, Japan, p
 
 
 **One-Hot Feature Comparisons from EXAMPLE 4**
+
+
+ **genre_Comedy** (Mean 0.4486, St.Dev 0.4974)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|1.608|0.8|0.8|
+|Cosine|yes|0.643|0.4|0|
+|Euclidean|yes|0.884|0.529|0.200|
+|Euclidean|no|1.366|0.721|0.600|
+
+From the genre_Comedy feature table above, we can see that Cosine normalized KNN performed the best, with an absolute average difference value of 0, while Euclidean normalized performed second best with a corresponding value of 0.200. Cosine un-normalized performed the worst with an absolute average difference 0f 0.8.
+
+**genre_Action** (Mean 0.3929, St.Dev 0.4885)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|0.818|0.632|0.4|
+|Cosine|yes|0|0|0|
+|Euclidean|yes|2.047|1|1|
+|Euclidean|no|0.409|0.447|0.199|
+
+Like for genre_Comedy, Cosine normalized also performed the best for the genre_Action feature. However, the performance for the other tests' ranks all varied between genre_Comedy and genre_Comedy, which indicates this result may be affected by variance or random chance.
+ 
+ **genre_Drama** (Mean 0.2651, St.Dev 0.4414)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
+|---|---|---|---|---|
+|Cosine|no|1.812|0.894|0.8|
+|Cosine|yes|0.453|0.447|0.2|
+|Euclidean|yes|0.906|0.632|0.4|
+|Euclidean|no|0.906|0.632|0.4|
+
+Like for the previous feature examinations, Cosine normalized had the lowest absolute average difference of 0.2.
+
+ 
+**Comparative Quantitative Feature Comparisons, EXAMPLE 3 and 4**
+
+|| | |***EXAMPLE 3 (similar inputs)***|***EXAMPLE 4 (different inputs)***|
+||---|---|---|---|---|---|
+||**DISTANCE**|**NORMALIZED?**|**AVG ABS ST.Z**|**AVG ABS ST.Z**|
+|**members**|Cosine|no|1.759|2.326|
+||Cosine|yes|3.630|1.955|
+||Euclidean|yes|1.910|0.034|
+||Euclidean|no|0.044|1.149|
+|**favorites**|Cosine|no|0.873|1.453|
+||Cosine|yes|9.011|2.813|
+||Euclidean|yes|1.456|1.032|
+||Euclidean|no|0.065|1.439|
+
+
+**Comparative One-Hot Feature Comparisons, EXAMPLE 3 and 4**
+|| | |***EXAMPLE 3 (similar inputs)***||***EXAMPLE 4 (different inputs)***||
+||---|---|---|---|---|---|---|---|
+||**DISTANCE**|**NORMALIZED?**|**AVG ABS ST.Z**|**ABS AVG Diff**|**AVG SQ ST.Dev**|**ABS AVG Diff**|
+|**genre_Comedy**|Cosine|no|1.105|0.35|1.608|0.8|
+||Cosine|yes|1.105|0.35|0.643|0|
+||Euclidean|yes|1.105|0.35|0.884|0.200|
+||Euclidean|no|0.904|0.150|1.366|0.600|
 
 
 
