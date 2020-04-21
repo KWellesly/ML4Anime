@@ -482,6 +482,66 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 | **Distances**     | -**Fullmetal Alchemist**: 7.40e-06<br> -**Future Diary**: 9.45e-06<br> -**Elfen Lied**: 9.74e-06<br> -**Parasyte**: 2.14 e-05<br> -**My Teen Romantic Comedy**: 2.59e-05 | -**Fullmetal Alchemist: Brotherhood**: 0.50<br> -**My Hero Academia**: 0.51<br> -**Code Geass: Lelouch**: 0.52<br> -**Death Note**: 0.52<br> -**Code Geass: Lelouch R2**: 0.52 | -**Ouran High School Host Club**: 8961.68<br> -**Maid-Sama!**: 13454.21<br> -**My Teen Romantic Comedy**: 15365.79<br> -**Princess Mononoke**: 18975.94<br> -**Overlord**: 19197.70 | -**JoJo's Bizarre Adventures: Diamond is Unbreakable**: 12.12<br> -**Re:CREATORS**: 12.39<br> -**Akame ga Kill!**: 12.40<br> -**Drifters**: 12.47<br> -**JoJo's Bizarre Adventure: Stardust Crusaders**: 12.76 |
 | **AVG Distances** | 1.47e-05                                                                                                                                                                 | 0.52                                                                                                                                                                           | 15191.06                                                                                                                                                                                      | 12.43                                                                                                                                                                                                          |
 
+
+**Quantitative Feature Comparisons from EXAMPLE 3**
+ 
+ **scored_by** (Mean 51396.646, St.Dev 96648.632)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|1.077|132280.945|
+|Cosine|yes|1.662|188732.958|
+|Euclidean|yes|1.317|161424.726|
+|Euclidean|no|1.411|136816.653|
+ 
+ **popularity** (Mean 2988.340, St.Dev 2868.050)
+ 
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.013|50.272|
+|Cosine|yes|0.002|8.173|
+|Euclidean|yes|0.032|119.952|
+|Euclidean|no|0.001|2.727|
+
+**episodes** (Mean 18.508, St.Dev 44.939)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.233|13.893|
+|Cosine|yes|0.315|17.348|
+|Euclidean|yes|0.131|8.634|
+|Euclidean|no|0.181|9.410|
+
+**rank** (Mean 3453.870, St.Dev 2736.869)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.128|371.299|
+|Cosine|yes|0.015|53.34|
+|Euclidean|yes|0.138|421.281|
+|Euclidean|no|0.05|162.610|
+
+**members** (Mean 100507.587, St.Dev 164257.151)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|1.032|218850.174|
+|Cosine|yes|1.498|272464.600|
+|Euclidean|yes|1.196|246220.459|
+|Euclidean|no|0.046|8979.482|
+
+**favorites** (Mean 1610.343, St.Dev 6211.037)
+
+|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
+|---|---|---|---|
+|Cosine|no|0.656|4930.025|
+|Cosine|yes|4.630|32868.400|
+|Euclidean|yes|1.386|9974.895|
+|Euclidean|no|0.597|5003.026|
+
+
+
+
   ESP FOR GROUPS OF SIMILAR ANIMES, IF INPUT DESCRIPTIONS HAVE OVERLAPPING WORDS, OUTPUT ANIME DESCRIPTIONS HAVE SIMILAR WORDS
 
 EXAMPLE 4, From different anime genres:
