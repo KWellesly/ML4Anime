@@ -319,7 +319,9 @@ The results for the favorites feature was similar to that of the members feature
 </p>
 and the bulk of the data for popularity is small in value. Because of this distribution, we were able to get results with small variance based on our input popularity, 2. In contrast, if we were to run KNN for an input with larger popularity feature, we would get significantly different results (see below).
 
-**Popularity feature test for Median popularity input** (Input: 1975, Mean 2988.340, St.Dev 2868.050)
+
+**Partial feature test, Median popularity input** (1975)
+(Mean 2988.340, St.Dev 2868.050)
 
 |DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
 |---|---|---|---|
