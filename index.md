@@ -247,6 +247,7 @@ Our second primary metric for feature comparisons is Average Standard Feature De
 where fi is the feature value of the output anime, mu is the average value for that feature from our input animes, and n is the number of output anime.
 
 
+
 EXAMPLE 1: From a single anime title: ['Attack on Titan']
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
