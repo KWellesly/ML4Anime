@@ -248,7 +248,8 @@ where fi is the feature value of the output anime, mu is the average value for t
 
 
 
- EXAMPLE 1: From a single anime title: ['Attack on Titan']
+ ***EXAMPLE 1: From a single anime***
+ ['Attack on Titan']
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -330,7 +331,7 @@ and the bulk of the data for popularity is small in value. Because of this distr
 Our resulting average absolute standard Z for our popularity feature from this test is 0.050, which is much greater than our EXAMPLE 1 test results (average absolute standard Z: 0.006).
 
 
-EXAMPLE 2, From a single series of anime:
+***EXAMPLE 2, From a single series of anime:***
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
 INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom' 
 
@@ -342,39 +343,6 @@ INPUT KEY TAKEAWAY: 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson
  
 
 **Quantitative Feature Comparisons from EXAMPLE 2**
- 
- **scored_by** (Mean 51396.646, St.Dev 96648.632)
- 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.957|107719.314|
-|Cosine|yes|0.431|52104.241|
-|Euclidean|yes|0.116|11524.224|
-|Euclidean|no|0.760|92020.483|
- 
- We can see from the above table for scored_by feature analysis that normalized KNN performed better than un-normalized KNN with regards to our input.
- 
- **popularity** (Mean 2988.340, St.Dev 2868.050)
- 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.037|134.361|
-|Cosine|yes|0.873|3472.135|
-|Euclidean|yes|0.331|1020.332|
-|Euclidean|no|0.222|799.213|
-
-In contrast to scored_by results, our popularity feature comparison from EXAMPLE 2 shows that both un-normalized KNN results performed better compared to normalized KNN for popularity.
-
-**episodes** (Mean 18.508, St.Dev 44.939)
-
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.183|9.346|
-|Cosine|yes|0.078|4.4|
-|Euclidean|yes|0.017|0.894|
-|Euclidean|no|0.040|2.332|
-
-With regards to the above table for our episodes feature, both Euclidean KNN results had lower variance from our input episodes feature.
 
 **rank** (Mean 3453.870, St.Dev 2736.869)
 
@@ -477,7 +445,7 @@ In contrast, we found that for one-hot encoded features that are large in propor
   In contrast, our Euclidean un-normalized results were heavily based on high values quantitative features such as scored_by, and did not give results similar to our on-hot encoded features. We can conclude from these results that normalizing our data is imperative to giving equal emphasis to our one-hot features and quantitative data features, but may result in skew due to normalizing high value quantitative feature values.
  
 
-EXAMPLE 3, From a relatively similar assortment of anime:
+***EXAMPLE 3, From a relatively similar assortment of anime:***
 ['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
 SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, attack
 
@@ -490,41 +458,6 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 
 **Quantitative Feature Comparisons from EXAMPLE 3**
  
- **scored_by** (Mean 51396.646, St.Dev 96648.632)
- 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|1.077|132280.945|
-|Cosine|yes|1.662|188732.958|
-|Euclidean|yes|1.317|161424.726|
-|Euclidean|no|1.411|136816.653|
- 
- **popularity** (Mean 2988.340, St.Dev 2868.050)
- 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.013|50.272|
-|Cosine|yes|0.002|8.173|
-|Euclidean|yes|0.032|119.952|
-|Euclidean|no|0.001|2.727|
-
-**episodes** (Mean 18.508, St.Dev 44.939)
-
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.233|13.893|
-|Cosine|yes|0.315|17.348|
-|Euclidean|yes|0.131|8.634|
-|Euclidean|no|0.181|9.410|
-
-**rank** (Mean 3453.870, St.Dev 2736.869)
-
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.128|371.299|
-|Cosine|yes|0.015|53.34|
-|Euclidean|yes|0.138|421.281|
-|Euclidean|no|0.05|162.610|
 
 **members** (Mean 100507.587, St.Dev 164257.151)
 
@@ -544,6 +477,7 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 |Euclidean|yes|1.386|9974.895|
 |Euclidean|no|0.597|5003.026|
 
+One trend consistently demonstrated from the quantitative feature comparisons is that for large quantitative values, normalizing our data before KNN modeling results in larger average absolute standard Z scores compared to un-normalized KNN.
 
 **One-Hot Feature Comparisons from EXAMPLE 3**
 
@@ -557,20 +491,10 @@ SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, a
 |Euclidean|yes|0.964|0.489|0|
 |Euclidean|no|1.45|0.529|0.199|
 
+From the above feature comparison, we can tell that both the un-normalized KNN results gave a set of anime that had an absolute mean difference value from the input average of 0.199, which is approximately 1 out of the recommended set of 5.
 
-**genre_Action** (Mean 0.3929, St.Dev 0.4885)
- 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|ABS AVG Diff|
-|---|---|---|---|---|
-|Cosine|no|0.655|0.4|0|
-|Cosine|yes|0.655|0.4|0|
-|Euclidean|yes|0|0|0|
-|Euclidean|no|0.982|0.489|0|
-
-
-  ESP FOR GROUPS OF SIMILAR ANIMES, IF INPUT DESCRIPTIONS HAVE OVERLAPPING WORDS, OUTPUT ANIME DESCRIPTIONS HAVE SIMILAR WORDS
-
-EXAMPLE 4, From different anime genres:
+  
+***EXAMPLE 4, From different anime genres:***
 ['AKIRA', 'Desert Punk', 'Naruto', 'D.N.Angel', 'Rurouni Kenshin']
 SHARED THEMES/WORDS: violence, attack, threat, friend, boy, fight, war, Japan, pain, kill
 
@@ -581,35 +505,7 @@ SHARED THEMES/WORDS: violence, attack, threat, friend, boy, fight, war, Japan, p
 | **AVG Distances** | 2.38e-05                                                                                                                                  | 0.55                                                                                                            | 10911.93                                                                                                                                         | 11.45                                                                                                                                                                        |
 
 
-**Quantitative Feature Comparisons from EXAMPLE 4**
- 
- 
- **popularity** (Mean 2988.340, St.Dev 2868.050)
- 
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.015|58.669|
-|Cosine|yes|0.221|638.734|
-|Euclidean|yes|0.30|87.315|
-|Euclidean|no|0.191|905.441|
-
-**episodes** (Mean 18.508, St.Dev 44.939)
-
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.135|6.280|
-|Cosine|yes|2.971|163.409|
-|Euclidean|yes|0.181|9.173|
-|Euclidean|no|0.174|8.749|
-
-**favorites** (Mean 1610.343, St.Dev 6211.037)
-
-|DISTANCE|NORMALIZED?|AVG ABS ST.Z|AVG SQ ST.Dev|
-|---|---|---|---|
-|Cosine|no|0.763|5917.963|
-|Cosine|yes|2.348|15738.445|
-|Euclidean|yes|0.352|2272.966|
-|Euclidean|no|0.257|2129.000|
+**One-Hot Feature Comparisons from EXAMPLE 4**
 
 
 
@@ -617,8 +513,7 @@ From our results, we can see for our dataset that on average, Euclidean un-norma
 
 However, to properly take in our NLP one-hot encoded synopsis data, we should use normalized KNN for better results. This accuracy is improved when a set input anime have closely overlapping or related words. For instance, from our EXAMPLE 3 Cosine normalized KNN test, the input anime synopses shared words like "human", "hero", "villain", "criminal", "fight", and "school". In comparison, the corresponding anime recommendations featured words also featured related words, such as "human", "killer", "hero", "school", "criminal", "vigilante". However, this also has its own downfalls, as quantitative values and one-hot encodes data are normalized to even their weights, more recommendations become heavily dependent on one-hot data. For example, in EXAMPLE 2, specifically the Cosine normalized KNN test, the input anime series (Attack on Titan) had many unrelated but repeating words, such as "recap", "rewrite", "episode", "humanity" and especially contained the phrase "recap of episodes". Likewise, the synopses of the output animes contained this phrase "recap of episode" or a similar variant, but the recommendations were more dependent on this particular synopsis wording, rather than other features.
 
-Additionally, we found that for very different input animes, like in our EXAMPLE 4 test, the KNN recommendations would have higher variance
- - HIGH VARIANCE INPUT DATA (TO MAKE AVERAGE) RESULTS IN HIGHER VARIANCE / MORE SPREAD OUT RECOMMENDATIONS
+Additionally, we found that for very different input animes, like in our EXAMPLE 4 test, the KNN recommendations would have higher variance on average, with normalized KNN results having higher variance than un-normalized KNN.
 
 
 ## Conclusion
