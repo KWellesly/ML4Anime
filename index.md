@@ -259,7 +259,7 @@ We first chose a single anime to test our KNN model with. This represents an inp
 | **Distances**     | - **Sword Art Online**: 4.53e-05<br>- **Dragon Ball Z**: 4.82e-05<br>- **Code Geass: Lelouch R2:** 5.28e-05<br>- **Death Note**: 5.83e-05<br>- **One Punch Man**: 1.59e-04 | - **Attack on Titan S2**: 0.26<br>- **Fullmetal Alchemist: Brotherhood**: 0.36<br>- **Death Note**: 0.38<br>- **Code Geass: Lelouch**: 0.40<br>- **Code Geass: Lelouch R2**: 0.44 | - **Sword Art Online**: 68802.63<br>- **Death Note**: 132434.60<br>- **Fullmetal Alchemist: Brotherhood**: 261364.26<br>- **One Punch Man**: 384929.08<br>- **Tokyo Ghoul**: 459418.36 | - **Attack on Titan S2**: 17.51<br>- **Code Geass: Lelouch**: 21.16<br>- **Code Geass: Lelouch R2**: 21.60<br>- **Fullmetal Alchemist: Brotherhood**: 22.11<br>- **Akame ga Kill**: 22.31 |
 | **AVG Distances** | 7.29e-05                                                                                                                                                                   | 0.37                                                                                                                                                                              | 261389.78                                                                                                                                                                              | 20.94                                                                                                                                                                                     |
 
-**Quantitative Feature Comparisons from EXAMPLE 1 (SINGLE INPUT)**
+**Quantitative Feature Comparisons from EXAMPLE 1**
 
 
 **popularity** (Mean: 2988.34, St. Dev: 2868.05)
@@ -308,7 +308,7 @@ and the bulk of the data for popularity is small in value. Because of this distr
 Our resulting average absolute standard Z for our popularity feature from this test is 0.05, which is much greater than our EXAMPLE 1 test results (average absolute standard Z: 0.01).
 
 
-#### EXAMPLE 2, From a single series of anime:
+#### EXAMPLE 2: From a single series of anime     
 ['Attack on Titan', 'Attack on Titan: Since That Day', 'Attack on Titan: Crimson Bow and Arrow', 'Attack on Titan: Wings of Freedom', 'Attack on Titan Season 2', 'Attack on Titan: Junior High', 'Attack on Titan Season 3']
 
 For this KNN test, we selected a series of anime to represent a very closely associated anime input set. We ran our KNN model and received the following results:
@@ -394,8 +394,8 @@ However, with regards to our results, we can say with relative confidence that b
   In contrast, our Euclidean un-normalized results were heavily based on high values quantitative features such as members, and did not give results similar to our on-hot encoded features. We can conclude from these results that normalizing our data is imperative to giving equal emphasis to our one-hot features and quantitative data features, but may result in skew due to normalizing high value quantitative feature values.
  
 
-#### EXAMPLE 3, From a relatively similar assortment of anime:
-['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']
+#### EXAMPLE 3: From a relatively similar assortment of anime        
+['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']     
 SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, attack
 
 Using our personal anime knowledge and experiences, we selected a set of anime that were relatively closely associated for our KNN model testing. Below are our KNN model recommendations:
@@ -422,7 +422,7 @@ Using our personal anime knowledge and experiences, we selected a set of anime t
 From the above feature comparison, we can see that of the KNN tests, Euclidean un-normalized had the worst performance. This most likely because of how the Euclidean formula is defined to consider weights and magnitudes of the vectors in comparison and, because the test was also not normalized, the final outcome was biased towards largest quantitative features, such as members, or favorites (which we can see from the previous favorites and members feature comparison tables that Euclidean un-normalized had the highest accuracy for, out of all our KNN tests).
 
   
-#### EXAMPLE 4, From different anime genres:
+#### EXAMPLE 4: From different anime genres
 ['AKIRA', 'Desert Punk', 'Naruto', 'D.N.Angel', 'Rurouni Kenshin']
 
 We selected our animes in this test by choosing 5 random genres (Horror, Ecchi, Comedy, Magic, and Romance) and then choosing an anime from the top of the list of anime in the corresponding genre. We then put this set of anime into our KNN model. The results were as follows:
