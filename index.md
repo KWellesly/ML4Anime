@@ -248,10 +248,10 @@ where fi is the feature value of the output anime, mu is the average value for t
 
 
 
- #### EXAMPLE 1: From a single anime 
- ['Attack on Titan']
+#### EXAMPLE 1: From a single anime
+['Attack on Titan']
  
- We first chose a single anime to test our KNN model with. This represents an input set with fully minimized variability. Recommendations are as follows:
+We first chose a single anime to test our KNN model with. This represents an input set with fully minimized variability. Recommendations are as follows:
 
 |               | Cosine Unaltered                                                                                                                                                           | Cosine Normalized                                                                                                                                                                 | Euclidean Unaltered                                                                                                                                                                    |                                                                                    Euclidean Normalized                                                                                   |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
