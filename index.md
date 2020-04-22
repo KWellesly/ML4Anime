@@ -395,9 +395,7 @@ However, with regards to our results, we can say with relative confidence that b
  
 
 #### EXAMPLE 3: From a relatively similar assortment of anime        
-['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']     
-SHARED THEMES/WORDS: survival, human, hero, villain, criminal, police, school, attack
-
+['Attack on Titan', 'Attack on Titan Season 2', 'Bungo Stray Dogs', 'My Hero Academia 3', 'Nanbaka', 'Nanbaka: Season 2', 'Nanbaka: Idiots with Student Numbers!', 'One Punch Man']    
 Using our personal anime knowledge and experiences, we selected a set of anime that were relatively closely associated for our KNN model testing. Below are our KNN model recommendations:
 
 |               | Cosine Unaltered                                                                                                                                                         | Cosine Normalized                                                                                                                                                              | Euclidean Unaltered                                                                                                                                                                           | Euclidean Normalized                                                                                                                                                                                           |
