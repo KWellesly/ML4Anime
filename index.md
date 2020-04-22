@@ -248,7 +248,7 @@ where fi is the feature value of the output anime, mu is the average value for t
 
 
 
- #### EXAMPLE 1: From a single anime
+ #### EXAMPLE 1: From a single anime 
  ['Attack on Titan']
  
  We first chose a single anime to test our KNN model with. This represents an input set with fully minimized variability. Recommendations are as follows:
@@ -562,6 +562,7 @@ From the above table, we can see that for a similar set (Example 3), both un-nor
 
 
 **Comparative One-Hot Feature Comparisons, EXAMPLE 3 and 4**
+
 ||||***EXAMPLE 3 (similar inputs)***||***EXAMPLE 4 (different inputs)***||
 |---|---|---|---|---|---|---|
 ||**Distance**|**Normalized**|**Avg Abs St. Z**|**Abs Avg Diff**|**Avg Sq St. Dev**|**Abs Avg Diff**|
